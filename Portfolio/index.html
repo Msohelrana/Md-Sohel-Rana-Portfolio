@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sohel — Unity / XR Developer</title>
+  <meta name="description" content="Portfolio of Sohel, a Unity developer building MR and VR experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <nav class="nav">
+    <a href="#top" class="logo">◆ sohel</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="top" class="hero">
+    <p class="eyebrow">Hello, world 👋</p>
+    <h1>
+      I'm <span class="grad">Sohel</span>.<br />
+      I build <span class="grad2">MR &amp; VR</span> experiences in Unity.
+    </h1>
+    <p class="lede">
+      Smart-glass apps, immersive AI assistants, and the playful bits in between.
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#contact">Get in touch</a>
+      <a class="btn ghost" href="#skills">See my skills</a>
+    </div>
+  </header>
+
+  <section id="about" class="section">
+    <h2><span class="tag">01</span> About</h2>
+    <div class="about-grid">
+      <p>
+        I'm a Unity developer focused on <strong>Mixed Reality</strong> and
+        <strong>Virtual Reality</strong>. I love turning weird ideas into things you
+        can reach out and touch — QR-driven object spawners on smart glasses,
+        voice-controlled AI companions in VR, and prototypes that make people grin
+        the first time they put on a headset.
+      </p>
+      <p>
+        I care about the small details: a responsive grab, a satisfying snap, a
+        UI that doesn't get in the way. I work end-to-end — concept, scripting,
+        scene work, and shipping a build.
+      </p>
+    </div>
+  </section>
+
+  <section id="skills" class="section">
+    <h2><span class="tag">02</span> Skills</h2>
+    <div class="skills">
+      <article class="card c1">
+        <h3>XR &amp; Unity</h3>
+        <ul>
+          <li>Unity (C#)</li>
+          <li>Mixed Reality / Smart Glasses</li>
+          <li>OpenXR · Meta XR · XR Interaction Toolkit</li>
+          <li>Hand &amp; controller input</li>
+        </ul>
+      </article>
+      <article class="card c2">
+        <h3>Tooling</h3>
+        <ul>
+          <li>C# · .NET</li>
+          <li>Shader Graph &amp; URP</li>
+          <li>Git · GitHub</li>
+          <li>Profiling &amp; build optimization</li>
+        </ul>
+      </article>
+      <article class="card c3">
+        <h3>AI &amp; Interaction</h3>
+        <ul>
+          <li>Whisper STT integration</li>
+          <li>Local LLMs (Ollama)</li>
+          <li>Windows TTS pipelines</li>
+          <li>QR / vision-based spawning</li>
+        </ul>
+      </article>
+      <article class="card c4">
+        <h3>Design</h3>
+        <ul>
+          <li>UX for headsets &amp; glasses</li>
+          <li>Rapid prototyping</li>
+          <li>Interaction polish</li>
+          <li>Diegetic UI</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <h2><span class="tag">03</span> Projects</h2>
+    <p class="lede">A peek at what I've been building. Click any media to view it bigger.</p>
+
+    <article class="project">
+      <header class="project-head">
+        <h3>MR Smart Glass — QR Spawner</h3>
+        <p>A Unity Mixed Reality app for smart glasses. Scan a QR code and the prefab mapped to that code spawns into your space. Built for hands-free, on-the-go object lookup.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">C#</span>
+          <span class="chip">MR / Smart Glasses</span>
+          <span class="chip">QR Vision</span>
+        </div>
+      </header>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/mr-smart-glass/video.mp4">
+          <video src="media/mr-smart-glass/video.mp4" poster="media/mr-smart-glass/poster.jpg" muted loop playsinline preload="metadata"></video>
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/mr-smart-glass/1.jpg">
+            <img src="media/mr-smart-glass/1.jpg" alt="MR Smart Glass screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/mr-smart-glass/2.jpg">
+            <img src="media/mr-smart-glass/2.jpg" alt="MR Smart Glass screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/mr-smart-glass/3.jpg">
+            <img src="media/mr-smart-glass/3.jpg" alt="MR Smart Glass screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <header class="project-head">
+        <h3>VR AI Assistant</h3>
+        <p>A Unity VR experience with a voice-driven AI companion. Press Space → Whisper transcribes your speech → a local Ollama (phi3) model replies → Windows TTS speaks the response back in-world.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">VR</span>
+          <span class="chip">Whisper STT</span>
+          <span class="chip">Ollama / phi3</span>
+          <span class="chip">Windows TTS</span>
+        </div>
+      </header>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/vr-ai-assistant/video.mp4">
+          <video src="media/vr-ai-assistant/video.mp4" poster="media/vr-ai-assistant/poster.jpg" muted loop playsinline preload="metadata"></video>
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/vr-ai-assistant/1.jpg">
+            <img src="media/vr-ai-assistant/1.jpg" alt="VR AI Assistant screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/vr-ai-assistant/2.jpg">
+            <img src="media/vr-ai-assistant/2.jpg" alt="VR AI Assistant screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/vr-ai-assistant/3.jpg">
+            <img src="media/vr-ai-assistant/3.jpg" alt="VR AI Assistant screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <button class="lb-close" aria-label="Close">✕</button>
+    <div class="lb-content"></div>
+  </div>
+
+  <section id="contact" class="section">
+    <h2><span class="tag">04</span> Contact</h2>
+    <p class="lede">Got a project in mind, or just want to say hi?</p>
+    <div class="contact-list">
+      <a class="contact-pill" href="mailto:your.email@example.com">
+        <span>✉</span> your.email@example.com
+      </a>
+      <a class="contact-pill" href="https://github.com/tpSohel" target="_blank" rel="noopener">
+        <span>◐</span> github.com/tpSohel
+      </a>
+      <a class="contact-pill" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">
+        <span>in</span> LinkedIn
+      </a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>© <span id="year"></span> Sohel · Built with HTML, CSS, and too much coffee.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
