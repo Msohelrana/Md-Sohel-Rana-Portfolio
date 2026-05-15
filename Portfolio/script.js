@@ -1,8 +1,9 @@
 // Current year in footer
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 // Reveal sections on scroll
-const targets = document.querySelectorAll(".section, .hero");
+const targets = document.querySelectorAll(".section, .hero, .page");
 targets.forEach(el => el.classList.add("reveal"));
 
 const io = new IntersectionObserver(
@@ -18,51 +19,66 @@ const io = new IntersectionObserver(
 );
 targets.forEach(el => io.observe(el));
 
-// Hover-to-play on project videos
-document.querySelectorAll(".media-main video").forEach(v => {
-  const parent = v.closest(".media-main");
-  parent.addEventListener("pointerenter", () => v.play().catch(() => {}));
-  parent.addEventListener("pointerleave", () => { v.pause(); v.currentTime = 0; });
-});
-
-// Lightbox
+// Lightbox (only present on the Projects page)
 const lb = document.getElementById("lightbox");
-const lbContent = lb.querySelector(".lb-content");
-const lbClose = lb.querySelector(".lb-close");
+if (lb) {
+  const lbContent = lb.querySelector(".lb-content");
+  const lbClose = lb.querySelector(".lb-close");
 
-function openLightbox(type, src) {
-  lbContent.innerHTML = "";
-  if (type === "video") {
-    const v = document.createElement("video");
-    v.src = src;
-    v.controls = true;
-    v.autoplay = true;
-    v.playsInline = true;
-    lbContent.appendChild(v);
-  } else {
-    const img = document.createElement("img");
-    img.src = src;
-    img.alt = "";
-    lbContent.appendChild(img);
-  }
-  lb.classList.add("open");
-  lb.setAttribute("aria-hidden", "false");
-}
-function closeLightbox() {
-  lb.classList.remove("open");
-  lb.setAttribute("aria-hidden", "true");
-  lbContent.innerHTML = "";
-}
+  const openLightbox = (type, src) => {
+    lbContent.innerHTML = "";
+    if (type === "video") {
+      const v = document.createElement("video");
+      v.src = src;
+      v.controls = true;
+      v.autoplay = true;
+      v.playsInline = true;
+      lbContent.appendChild(v);
+    } else {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = "";
+      lbContent.appendChild(img);
+    }
+    lb.classList.add("open");
+    lb.setAttribute("aria-hidden", "false");
+  };
+  const closeLightbox = () => {
+    lb.classList.remove("open");
+    lb.setAttribute("aria-hidden", "true");
+    lbContent.innerHTML = "";
+  };
 
-document.querySelectorAll("[data-lightbox]").forEach(el => {
-  el.addEventListener("click", e => {
-    e.preventDefault();
-    openLightbox(el.dataset.type, el.dataset.src);
+  document.querySelectorAll("[data-lightbox]").forEach(el => {
+    el.addEventListener("click", e => {
+      e.preventDefault();
+      // Main project video: play inline inside the card
+      if (el.classList.contains("media-main") && el.dataset.type === "video") {
+        if (el.classList.contains("playing")) return;
+        const originalHTML = el.innerHTML;
+        el.classList.add("playing");
+        const video = document.createElement("video");
+        video.src = el.dataset.src;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        const restore = () => {
+          el.classList.remove("playing");
+          el.innerHTML = originalHTML;
+        };
+        video.addEventListener("ended", restore);
+        el.innerHTML = "";
+        el.appendChild(video);
+        return;
+      }
+      // Everything else (gallery thumbs): open lightbox
+      openLightbox(el.dataset.type, el.dataset.src);
+    });
   });
-});
-lbClose.addEventListener("click", closeLightbox);
-lb.addEventListener("click", e => { if (e.target === lb) closeLightbox(); });
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+  lbClose.addEventListener("click", closeLightbox);
+  lb.addEventListener("click", e => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+}
 
 // Tilt cards on pointer move (subtle, playful)
 document.querySelectorAll(".card").forEach(card => {

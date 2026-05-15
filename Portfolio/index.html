@@ -1,113 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sohel — Unity / XR Developer</title>
-  <meta name="description" content="Portfolio of Sohel, a Unity developer building MR and VR experiences." />
+  <title>Md Sohel Rana — Unity Developer / Games &amp; XR</title>
+  <meta name="description"
+    content="Md Sohel Rana — Unity developer with shipped mobile games (Hotel Tycoon, Highway Havoc, Supreme Strike, Goods Match) and MR / VR prototypes." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
 
   <nav class="nav">
-    <a href="#top" class="logo">◆ sohel</a>
+    <a href="#top" class="logo">
+      <span class="blob-dot"></span> Md. Sohel Rana
+    </a>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Say Hi →</a></li>
     </ul>
   </nav>
 
+  <!-- HERO -->
   <header id="top" class="hero">
-    <p class="eyebrow">Hello, world 👋</p>
-    <h1>
-      I'm <span class="grad">Sohel</span>.<br />
-      I build <span class="grad2">MR &amp; VR</span> experiences in Unity.
-    </h1>
-    <p class="lede">
-      Smart-glass apps, immersive AI assistants, and the playful bits in between.
-    </p>
-    <div class="cta">
-      <a class="btn primary" href="#contact">Get in touch</a>
-      <a class="btn ghost" href="#skills">See my skills</a>
+    <div class="hero-text">
+      <p class="eyebrow">hey there ✺</p>
+      <h1>
+        I'm Md Sohel Rana <span class="wave">👋</span><br />
+        I make <span class="highlight">mobile games</span><br />
+        &amp; <span class="scribble">MR / VR</span> things.
+      </h1>
+      <p class="lede">
+        Unity developer split between two worlds — I ship casual mobile games that people actually play, and prototype
+        smart-glass apps + voice-driven VR companions for fun.
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">see my work
+          <svg class="arrow-svg" viewBox="0 0 64 36" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M 4 18 Q 22 6, 44 18 T 58 18" />
+            <path d="M 50 11 L 60 18 L 50 25" />
+          </svg>
+        </a>
+        <a class="btn ghost" href="#contact">let's chat</a>
+      </div>
+    </div>
+
+    <div class="polaroid-wrap">
+      <div class="polaroid">
+        <div class="photo">
+          <img src="media/me.jpg" alt="Photo of Md Sohel Rana" />
+        </div>
+        <div class="caption">— that's me!</div>
+      </div>
+      <span class="note note-photo" aria-hidden="true">
+        <svg class="arrow-svg" viewBox="0 0 80 50" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 6 8 Q 30 30, 70 38" />
+          <path d="M 62 30 L 72 40 L 60 42" />
+        </svg>
+        the human
+      </span>
     </div>
   </header>
 
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Unity <span class="star">✺</span> Mobile Games <span class="star">✺</span> Hyper-Casual <span
+          class="star">✺</span> Idle Tycoon <span class="star">✺</span> C# <span class="star">✺</span> Mixed Reality
+        <span class="star">✺</span> OpenXR <span class="star">✺</span> Smart Glasses <span class="star">✺</span> Voice
+        AI <span class="star">✺</span> Shader Graph <span class="star">✺</span></span>
+      <span>Unity <span class="star">✺</span> Mobile Games <span class="star">✺</span> Hyper-Casual <span
+          class="star">✺</span> Idle Tycoon <span class="star">✺</span> C# <span class="star">✺</span> Mixed Reality
+        <span class="star">✺</span> OpenXR <span class="star">✺</span> Smart Glasses <span class="star">✺</span> Voice
+        AI <span class="star">✺</span> Shader Graph <span class="star">✺</span></span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
   <section id="about" class="section">
-    <h2><span class="tag">01</span> About</h2>
+    <div class="section-head">
+      <span class="num">~ 01</span>
+      <h2>A bit about me.</h2>
+    </div>
     <div class="about-grid">
-      <p>
-        I'm a Unity developer focused on <strong>Mixed Reality</strong> and
-        <strong>Virtual Reality</strong>. I love turning weird ideas into things you
-        can reach out and touch — QR-driven object spawners on smart glasses,
-        voice-controlled AI companions in VR, and prototypes that make people grin
-        the first time they put on a headset.
-      </p>
-      <p>
-        I care about the small details: a responsive grab, a satisfying snap, a
-        UI that doesn't get in the way. I work end-to-end — concept, scripting,
-        scene work, and shipping a build.
-      </p>
+      <div class="about-text">
+        <p>
+          I'm a Unity developer with a foot in two camps. On the games side,
+          I've shipped <strong>Hotel Tycoon: Idle Manager</strong>,
+          <strong>Highway Havoc</strong>, <strong>Supreme Strike</strong>, and
+          <strong>Goods Match</strong> — mobile games spanning idle tycoon, arcade,
+          action, and match genres.
+        </p>
+        <p>
+          On the XR side I build <strong>Mixed Reality</strong> and
+          <strong>Virtual Reality</strong> prototypes — QR-driven object spawners
+          on smart glasses, voice-controlled AI companions in VR, and the playful
+          interactions that make people grin the first time they put on a headset.
+        </p>
+        <p>
+          I care about the small details — a satisfying tap, a snappy feedback
+          loop, a UI that doesn't get in the way. End-to-end: concept, scripting,
+          scene work, and shipping the build.
+        </p>
+      </div>
+      <aside class="sticky-note" aria-label="A personal note">
+        4 games shipped<br />
+        &amp; counting ✺<br />
+        ...now exploring<br />
+        AI-powered XR
+        <span class="signature">— Sohel</span>
+      </aside>
     </div>
   </section>
 
+  <!-- SKILLS -->
   <section id="skills" class="section">
-    <h2><span class="tag">02</span> Skills</h2>
-    <div class="skills">
-      <article class="card c1">
-        <h3>XR &amp; Unity</h3>
-        <ul>
-          <li>Unity (C#)</li>
-          <li>Mixed Reality / Smart Glasses</li>
-          <li>OpenXR · Meta XR · XR Interaction Toolkit</li>
-          <li>Hand &amp; controller input</li>
-        </ul>
-      </article>
-      <article class="card c2">
-        <h3>Tooling</h3>
-        <ul>
-          <li>C# · .NET</li>
-          <li>Shader Graph &amp; URP</li>
-          <li>Git · GitHub</li>
-          <li>Profiling &amp; build optimization</li>
-        </ul>
-      </article>
-      <article class="card c3">
-        <h3>AI &amp; Interaction</h3>
-        <ul>
-          <li>Whisper STT integration</li>
-          <li>Local LLMs (Ollama)</li>
-          <li>Windows TTS pipelines</li>
-          <li>QR / vision-based spawning</li>
-        </ul>
-      </article>
-      <article class="card c4">
-        <h3>Design</h3>
-        <ul>
-          <li>UX for headsets &amp; glasses</li>
-          <li>Rapid prototyping</li>
-          <li>Interaction polish</li>
-          <li>Diegetic UI</li>
-        </ul>
-      </article>
+    <div class="section-head">
+      <span class="num">~ 02</span>
+      <h2>Things I'm good at.</h2>
+    </div>
+    <div class="skills-cloud">
+      <span class="bubble b-red">Unity</span>
+      <span class="bubble">C#</span>
+      <span class="bubble b-yellow">Mobile Games</span>
+      <span class="bubble b-cream">Android &amp; iOS</span>
+      <span class="bubble b-green">Idle / Tycoon Design</span>
+      <span class="bubble">Hyper-Casual</span>
+      <span class="bubble b-peach">Match / Puzzle</span>
+      <span class="bubble">Arcade / Action</span>
+      <span class="bubble b-blue">Game Mechanics &amp; Balancing</span>
+      <span class="bubble">UI / UX</span>
+      <span class="bubble b-yellow">Shader Graph</span>
+      <span class="bubble b-cream">URP</span>
+      <span class="bubble b-red">XR Interaction Toolkit</span>
+      <span class="bubble">OpenXR</span>
+      <span class="bubble b-blue">Meta XR SDK</span>
+      <span class="bubble b-green">Smart Glasses (MR)</span>
+      <span class="bubble">Hand Tracking</span>
+      <span class="bubble b-peach">Whisper STT</span>
+      <span class="bubble b-yellow">Ollama / Local LLMs</span>
+      <span class="bubble">Windows TTS</span>
+      <span class="bubble b-cream">Git &amp; GitHub</span>
+      <span class="bubble">Performance Profiling</span>
+      <span class="bubble b-blue">Rapid Prototyping</span>
     </div>
   </section>
 
+  <!-- PROJECTS -->
   <section id="projects" class="section">
-    <h2><span class="tag">03</span> Projects</h2>
-    <p class="lede">A peek at what I've been building. Click any media to view it bigger.</p>
+    <div class="section-head">
+      <span class="num">~ 03</span>
+      <h2>Stuff I've built.</h2>
+    </div>
+
+    <h3 class="subhead">Shipped Mobile Games</h3>
 
     <article class="project">
+      <span class="sticker s-green">shipped!</span>
+      <header class="project-head">
+        <h3>Hotel Tycoon: Idle Manager</h3>
+        <p>An idle tycoon game where players build, upgrade, and manage a growing hotel empire. Every tap and decision
+          compounds — rooms, staff, amenities, and prestige unlock new revenue streams.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">Mobile</span>
+          <span class="chip">Idle / Tycoon</span>
+          <span class="chip">Progression Design</span>
+        </div>
+      </header>
+
+      <div class="project-links">
+        <a class="store-btn play" href="#" target="_blank" rel="noopener" aria-label="Hotel Tycoon on Google Play">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M 3 2 L 13 8 L 3 14 Z" />
+          </svg>
+          Google Play
+        </a>
+        <a class="store-btn webgl" href="#" target="_blank" rel="noopener"
+          aria-label="Play Hotel Tycoon in browser (WebGL)">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5" />
+            <path d="M 1.5 8 H 14.5" />
+            <path d="M 8 1.5 Q 12 8 8 14.5" />
+            <path d="M 8 1.5 Q 4 8 8 14.5" />
+          </svg>
+          Play in Browser
+        </a>
+      </div>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/hotel-tycoon/video.mp4">
+          <img src="media/hotel-tycoon/poster.jpg" alt="Hotel Tycoon poster" />
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/hotel-tycoon/1.jpg">
+            <img src="media/hotel-tycoon/1.jpg" alt="Hotel Tycoon screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/hotel-tycoon/2.jpg">
+            <img src="media/hotel-tycoon/2.jpg" alt="Hotel Tycoon screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/hotel-tycoon/3.jpg">
+            <img src="media/hotel-tycoon/3.jpg" alt="Hotel Tycoon screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <span class="sticker s-blue">live!</span>
+      <header class="project-head">
+        <h3>Highway Havoc</h3>
+        <p>An arcade-style endless driver — weave through traffic at top speed, dodge cars, chain near-misses, and rack
+          up high scores. Tight controls, punchy feedback.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">Mobile</span>
+          <span class="chip">Arcade / Endless</span>
+          <span class="chip">Vehicle Physics</span>
+        </div>
+      </header>
+
+      <div class="project-links">
+        <a class="store-btn play" href="#" target="_blank" rel="noopener" aria-label="Highway Havoc on Google Play">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M 3 2 L 13 8 L 3 14 Z" />
+          </svg>
+          Google Play
+        </a>
+        <a class="store-btn webgl" href="#" target="_blank" rel="noopener"
+          aria-label="Play Highway Havoc in browser (WebGL)">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5" />
+            <path d="M 1.5 8 H 14.5" />
+            <path d="M 8 1.5 Q 12 8 8 14.5" />
+            <path d="M 8 1.5 Q 4 8 8 14.5" />
+          </svg>
+          Play in Browser
+        </a>
+      </div>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/highway-havoc/video.mp4">
+          <img src="media/highway-havoc/poster.jpg" alt="Highway Havoc poster" />
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/highway-havoc/1.jpg">
+            <img src="media/highway-havoc/1.jpg" alt="Highway Havoc screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/highway-havoc/2.jpg">
+            <img src="media/highway-havoc/2.jpg" alt="Highway Havoc screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/highway-havoc/3.jpg">
+            <img src="media/highway-havoc/3.jpg" alt="Highway Havoc screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <span class="sticker">shipped!</span>
+      <header class="project-head">
+        <h3>Supreme Strike</h3>
+        <p>An action-striking game with timing-based combat. Land clean hits, build combos, and take down increasingly
+          tough opponents across escalating stages.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">Mobile</span>
+          <span class="chip">Action</span>
+          <span class="chip">Combat Feel</span>
+        </div>
+      </header>
+
+      <div class="project-links">
+        <a class="store-btn play" href="#" target="_blank" rel="noopener" aria-label="Supreme Strike on Google Play">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M 3 2 L 13 8 L 3 14 Z" />
+          </svg>
+          Google Play
+        </a>
+        <a class="store-btn webgl" href="#" target="_blank" rel="noopener"
+          aria-label="Play Supreme Strike in browser (WebGL)">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5" />
+            <path d="M 1.5 8 H 14.5" />
+            <path d="M 8 1.5 Q 12 8 8 14.5" />
+            <path d="M 8 1.5 Q 4 8 8 14.5" />
+          </svg>
+          Play in Browser
+        </a>
+      </div>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/supreme-strike/video.mp4">
+          <img src="media/supreme-strike/poster.jpg" alt="Supreme Strike poster" />
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/supreme-strike/1.jpg">
+            <img src="media/supreme-strike/1.jpg" alt="Supreme Strike screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/supreme-strike/2.jpg">
+            <img src="media/supreme-strike/2.jpg" alt="Supreme Strike screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/supreme-strike/3.jpg">
+            <img src="media/supreme-strike/3.jpg" alt="Supreme Strike screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <span class="sticker s-green">live!</span>
+      <header class="project-head">
+        <h3>Goods Match</h3>
+        <p>A relaxing item-matching puzzle. Spot pairs across cluttered scenes, clear the board, and progress through
+          cozy themed levels — easy to pick up, hard to put down.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">Mobile</span>
+          <span class="chip">Match / Puzzle</span>
+          <span class="chip">Casual</span>
+        </div>
+      </header>
+
+      <div class="project-links">
+        <a class="store-btn play" href="#" target="_blank" rel="noopener" aria-label="Goods Match on Google Play">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M 3 2 L 13 8 L 3 14 Z" />
+          </svg>
+          Google Play
+        </a>
+        <a class="store-btn webgl" href="#" target="_blank" rel="noopener"
+          aria-label="Play Goods Match in browser (WebGL)">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5" />
+            <path d="M 1.5 8 H 14.5" />
+            <path d="M 8 1.5 Q 12 8 8 14.5" />
+            <path d="M 8 1.5 Q 4 8 8 14.5" />
+          </svg>
+          Play in Browser
+        </a>
+      </div>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/goods-match/video.mp4">
+          <img src="media/goods-match/poster.jpg" alt="Goods Match poster" />
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/goods-match/1.jpg">
+            <img src="media/goods-match/1.jpg" alt="Goods Match screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/goods-match/2.jpg">
+            <img src="media/goods-match/2.jpg" alt="Goods Match screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/goods-match/3.jpg">
+            <img src="media/goods-match/3.jpg" alt="Goods Match screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <h3 class="subhead">XR &amp; Apps</h3>
+
+    <article class="project">
+      <span class="sticker">new!</span>
       <header class="project-head">
         <h3>MR Smart Glass — QR Spawner</h3>
-        <p>A Unity Mixed Reality app for smart glasses. Scan a QR code and the prefab mapped to that code spawns into your space. Built for hands-free, on-the-go object lookup.</p>
+        <p>A Unity Mixed Reality app for smart glasses. Scan a QR code and the prefab mapped to that code spawns into
+          your space. Built for hands-free, on-the-go object lookup.</p>
         <div class="chips">
           <span class="chip">Unity</span>
           <span class="chip">C#</span>
@@ -118,7 +391,7 @@
 
       <div class="project-media">
         <div class="media-main" data-lightbox data-type="video" data-src="media/mr-smart-glass/video.mp4">
-          <video src="media/mr-smart-glass/video.mp4" poster="media/mr-smart-glass/poster.jpg" muted loop playsinline preload="metadata"></video>
+          <img src="media/mr-smart-glass/poster.jpg" alt="MR Smart Glass poster" />
           <div class="play-badge">▶</div>
         </div>
         <div class="media-gallery">
@@ -136,9 +409,11 @@
     </article>
 
     <article class="project">
+      <span class="sticker s-blue">fun!</span>
       <header class="project-head">
         <h3>VR AI Assistant</h3>
-        <p>A Unity VR experience with a voice-driven AI companion. Press Space → Whisper transcribes your speech → a local Ollama (phi3) model replies → Windows TTS speaks the response back in-world.</p>
+        <p>A Unity VR experience with a voice-driven AI companion. Press Space → Whisper transcribes your speech → a
+          local Ollama (phi3) model replies → Windows TTS speaks the response back in-world.</p>
         <div class="chips">
           <span class="chip">Unity</span>
           <span class="chip">VR</span>
@@ -150,7 +425,7 @@
 
       <div class="project-media">
         <div class="media-main" data-lightbox data-type="video" data-src="media/vr-ai-assistant/video.mp4">
-          <video src="media/vr-ai-assistant/video.mp4" poster="media/vr-ai-assistant/poster.jpg" muted loop playsinline preload="metadata"></video>
+          <img src="media/vr-ai-assistant/poster.jpg" alt="VR AI Assistant poster" />
           <div class="play-badge">▶</div>
         </div>
         <div class="media-gallery">
@@ -168,32 +443,41 @@
     </article>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="contact-wrap">
+      <div class="section-head" style="justify-content:center;">
+        <span class="num">~ 04</span>
+      </div>
+      <h2>Let's make something <span class="highlight">weird</span> together.</h2>
+      <p class="lede">Got a project in mind, or just want to say hi? My inbox is open.</p>
+      <div class="contact-list">
+        <a class="contact-pill" href="mailto:your.email@example.com">
+          <span class="icon">✉</span> your.email@example.com
+        </a>
+        <a class="contact-pill" href="https://github.com/tpSohel" target="_blank" rel="noopener">
+          <span class="icon">◐</span> github.com/tpSohel
+        </a>
+        <a class="contact-pill" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">
+          <span class="icon">in</span> LinkedIn
+        </a>
+      </div>
+      <p class="heart">thanks for scrolling all the way down ♥</p>
+    </div>
+  </section>
+
   <!-- Lightbox -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <button class="lb-close" aria-label="Close">✕</button>
     <div class="lb-content"></div>
   </div>
 
-  <section id="contact" class="section">
-    <h2><span class="tag">04</span> Contact</h2>
-    <p class="lede">Got a project in mind, or just want to say hi?</p>
-    <div class="contact-list">
-      <a class="contact-pill" href="mailto:your.email@example.com">
-        <span>✉</span> your.email@example.com
-      </a>
-      <a class="contact-pill" href="https://github.com/tpSohel" target="_blank" rel="noopener">
-        <span>◐</span> github.com/tpSohel
-      </a>
-      <a class="contact-pill" href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">
-        <span>in</span> LinkedIn
-      </a>
-    </div>
-  </section>
-
   <footer class="foot">
-    <p>© <span id="year"></span> Sohel · Built with HTML, CSS, and too much coffee.</p>
+    <span class="sig">— Md Sohel Rana</span>
+    © <span id="year"></span> · Built with HTML, CSS, and too much coffee.
   </footer>
 
   <script src="script.js"></script>
 </body>
+
 </html>
