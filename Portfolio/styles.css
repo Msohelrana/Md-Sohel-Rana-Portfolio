@@ -276,12 +276,12 @@ body > * { position: relative; z-index: 1; }
 
 /* Marquee */
 .marquee {
-  background: var(--ink);
-  color: var(--bg);
+  background: #fff3c4;
+  color: var(--ink);
   padding: 18px 0;
   overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
   margin: 40px 0;
 }
 .marquee-track {
@@ -296,7 +296,7 @@ body > * { position: relative; z-index: 1; }
   font-weight: 500;
 }
 .marquee-track span { display: inline-flex; align-items: center; gap: 40px; }
-.marquee-track .star { color: var(--yellow); }
+.marquee-track .star { color: var(--red); }
 @keyframes scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
