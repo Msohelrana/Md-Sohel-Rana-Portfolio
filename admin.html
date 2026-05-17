@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Admin · Md Sohel Rana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf5ec;
+      --paper: #fffaf0;
+      --ink: #1a1a1a;
+      --ink-soft: #4a4a4a;
+      --muted: #7a7466;
+      --line: rgba(26, 26, 26, 0.12);
+      --red: #e84545;
+      --green: #7bb872;
+      --blue: #5b8def;
+      --yellow: #ffd84d;
+      --peach: #ffb088;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Inter", system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 32px 24px 80px; }
+    header.page-head { margin-bottom: 32px; }
+    header.page-head h1 {
+      font-family: "Fraunces", serif;
+      font-size: 2.2rem;
+      margin: 0 0 6px;
+      letter-spacing: -0.02em;
+    }
+    header.page-head p { color: var(--ink-soft); margin: 0; }
+
+    .panel {
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .panel h2 {
+      font-family: "Fraunces", serif;
+      font-size: 1.35rem;
+      margin: 0 0 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .panel h2 .tag {
+      font-size: 0.7rem;
+      font-family: "Inter", sans-serif;
+      letter-spacing: 0.1em;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 700;
+    }
+    .panel .help {
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      margin: 0 0 16px;
+    }
+
+    label { display: block; margin: 12px 0 4px; font-weight: 500; font-size: 0.92rem; }
+    label .req { color: var(--red); margin-left: 2px; }
+    input[type="text"],
+    input[type="url"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      font: inherit;
+      background: var(--bg);
+      color: var(--ink);
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    input[type="file"] { font: inherit; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--paper);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s, background 0.2s;
+    }
+    .btn:hover { background: var(--red); }
+    .btn.ghost { background: transparent; color: var(--ink); }
+    .btn.ghost:hover { background: var(--ink); color: var(--paper); }
+    .btn.danger { background: var(--red); border-color: var(--red); }
+    .btn.danger:hover { background: var(--ink); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+
+    #status {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translate(-50%, 200%);
+      background: var(--ink);
+      color: var(--paper);
+      padding: 16px 28px;
+      border: 2px solid var(--ink);
+      border-radius: 14px;
+      font-size: 1.02rem;
+      font-weight: 600;
+      box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
+      max-width: min(560px, 92vw);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    #status.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #status.ok {
+      background: var(--green);
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+    #status.err {
+      background: var(--red);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+    #status .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      font-size: 1rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    #status.err .icon { background: rgba(255, 255, 255, 0.25); color: var(--paper); }
+    #status .msg { flex: 1; line-height: 1.3; }
+    #status .close-x {
+      background: transparent;
+      border: none;
+      color: inherit;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0 4px;
+      opacity: 0.7;
+    }
+    #status .close-x:hover { opacity: 1; }
+    @keyframes statusPop {
+      0% { transform: translate(-50%, 200%) scale(0.9); }
+      60% { transform: translate(-50%, -10%) scale(1.04); }
+      100% { transform: translate(-50%, 0) scale(1); }
+    }
+    #status.show { animation: statusPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+    .connect-box {
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .connect-box h2 { justify-content: center; font-size: 1.6rem; }
+    .connect-box .help { max-width: 480px; margin: 0 auto 18px; }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      margin-bottom: 8px;
+      background: var(--bg);
+    }
+    .project-row .meta { min-width: 0; }
+    .project-row .meta strong { display: block; font-size: 0.98rem; }
+    .project-row .meta small { color: var(--muted); font-size: 0.82rem; }
+    .project-row .row-btns { display: flex; gap: 6px; }
+    .project-row .row-btns .btn { padding: 6px 12px; font-size: 0.85rem; }
+
+    dialog#project-dialog {
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      padding: 28px;
+      max-width: 720px;
+      width: calc(100vw - 32px);
+      background: var(--paper);
+      color: var(--ink);
+      box-shadow: 8px 8px 0 var(--ink);
+    }
+    dialog#project-dialog::backdrop { background: rgba(26, 26, 26, 0.55); }
+    dialog#project-dialog h2 { margin-top: 0; }
+    dialog#project-dialog .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .field-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .field-grid-3 { grid-template-columns: 1fr; } }
+
+    .media-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 640px) { .media-grid { grid-template-columns: 1fr; } }
+    .media-field {
+      padding: 10px 12px;
+      border: 1.5px dashed var(--ink);
+      border-radius: 10px;
+      background: var(--bg);
+    }
+    .media-field label { margin: 0 0 6px; font-size: 0.85rem; }
+
+    .pill-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left: 6px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .small { font-size: 0.86rem; color: var(--ink-soft); }
+    code { background: var(--bg); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Portfolio Admin</h1>
+      <p>Local-only editor for <code>F:\Md Sohel Rana Portfolio</code>. Changes save directly to disk — then commit &amp; push to deploy.</p>
+    </header>
+
+    <!-- Connect step -->
+    <section class="panel connect-box" id="connect-panel">
+      <h2>Connect to portfolio folder</h2>
+      <p class="help">
+        Click below and pick your <code>F:\Md Sohel Rana Portfolio</code> folder. The browser needs permission once per session to read &amp; write files there. Works in Chrome &amp; Edge (File System Access API).
+      </p>
+      <button class="btn" id="connect-btn">📁 Pick portfolio folder</button>
+    </section>
+
+    <!-- Admin (hidden until connected) -->
+    <div id="admin" hidden>
+      <section class="panel">
+        <h2>Photo <span class="tag">media/me.jpg</span></h2>
+        <p class="help">Replace the circular avatar that appears in the navbar.</p>
+        <input type="file" id="photo-file" accept="image/jpeg,image/png,image/webp">
+        <div class="btn-row">
+          <button type="button" class="btn" id="save-photo">Save as media/me.jpg</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Resume <span class="tag">media/resume.pdf</span></h2>
+        <p class="help">Replace the PDF embedded in the Resume section.</p>
+        <input type="file" id="resume-file" accept="application/pdf">
+        <div class="btn-row">
+          <button type="button" class="btn" id="save-resume">Save as media/resume.pdf</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Skills <span class="tag">skills.json</span></h2>
+        <p class="help">Manage the skill cards on the homepage. Each card is a category (Languages, Game Dev, etc.) with a tag, name, color, and a list of items.</p>
+        <div id="skills-list"></div>
+        <div class="btn-row">
+          <button type="button" class="btn" id="add-skill">＋ Add new category</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Projects <span class="tag">projects.json</span></h2>
+        <p class="help">Add new projects or edit existing ones. Hit Save in the dialog to write changes to <code>projects.json</code>.</p>
+        <div id="projects-list"></div>
+        <div class="btn-row">
+          <button type="button" class="btn" id="add-project">＋ Add new project</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="status" role="status" aria-live="polite"></div>
+  </div>
+
+  <!-- Skill category add/edit dialog -->
+  <dialog id="skill-dialog">
+    <h2 id="skill-dialog-title">Add new category</h2>
+    <form id="skill-form" method="dialog">
+      <input type="hidden" id="skill-editing-index" value="-1" />
+
+      <div class="row">
+        <div>
+          <label>Name <span class="req">*</span></label>
+          <input type="text" id="sf-name" required placeholder="e.g. Game Dev" />
+        </div>
+        <div>
+          <label>Tag <span class="pill-tag">handwritten badge</span></label>
+          <input type="text" id="sf-tag" placeholder="e.g. games" />
+        </div>
+      </div>
+
+      <label>Color</label>
+      <select id="sf-color">
+        <option value="s-red">red</option>
+        <option value="s-yellow">yellow</option>
+        <option value="s-green">green</option>
+        <option value="s-blue">blue</option>
+        <option value="s-peach">peach</option>
+        <option value="s-cream">cream</option>
+      </select>
+
+      <label>Items <span class="pill-tag">one per line · use **text** for bold</span></label>
+      <textarea id="sf-items" rows="8" placeholder="Unity (C#)&#10;Mobile · Android &amp; iOS&#10;**800+** problems solved"></textarea>
+
+      <div class="form-actions">
+        <button type="button" class="btn ghost" id="skill-cancel-dialog">Cancel</button>
+        <button type="submit" class="btn">Save category</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Project add/edit dialog -->
+  <dialog id="project-dialog">
+    <h2 id="dialog-title">Add new project</h2>
+    <form id="project-form" method="dialog">
+      <input type="hidden" id="editing-index" value="-1" />
+
+      <label>Title <span class="req">*</span></label>
+      <input type="text" id="f-title" required placeholder="e.g. Hotel Tycoon: Idle Manager" />
+
+      <label>Subsection <span class="req">*</span></label>
+      <input type="text" id="f-subsection" list="subsection-list" required placeholder="e.g. Shipped Mobile Games" />
+      <datalist id="subsection-list">
+        <option value="Shipped Mobile Games"></option>
+        <option value="XR &amp; Apps"></option>
+        <option value="Other Unity Projects"></option>
+        <option value="Web / Backend"></option>
+      </datalist>
+
+      <label>Slug <span class="req">*</span> <span class="pill-tag">media folder name</span></label>
+      <input type="text" id="f-slug" required pattern="[a-z0-9-]+" placeholder="lowercase-with-dashes" />
+      <p class="small">Used as the folder name for media: <code>media/&lt;slug&gt;/</code>. Auto-generated from title.</p>
+
+      <label>Description <span class="req">*</span></label>
+      <textarea id="f-description" required placeholder="One- or two-sentence pitch"></textarea>
+
+      <label>Chips <span class="pill-tag">comma-separated</span></label>
+      <input type="text" id="f-chips" placeholder="Unity, Mobile, Action, etc." />
+
+      <div class="field-grid-3">
+        <div>
+          <label>Sticker text</label>
+          <input type="text" id="f-sticker-text" placeholder="e.g. shipped!" />
+        </div>
+        <div>
+          <label>Sticker color</label>
+          <select id="f-sticker-color">
+            <option value="">red (default)</option>
+            <option value="s-green">green</option>
+            <option value="s-blue">blue</option>
+          </select>
+        </div>
+        <div>
+          <label>Has media?</label>
+          <select id="f-has-media">
+            <option value="true">Yes — show video + screenshots</option>
+            <option value="false">No — text-only card (backend etc.)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div>
+          <label>Show store buttons?</label>
+          <select id="f-show-store">
+            <option value="false">No</option>
+            <option value="true">Yes — show Google Play + WebGL</option>
+          </select>
+        </div>
+        <div>
+          <label>Google Play URL</label>
+          <input type="url" id="f-play-store" placeholder="https://play.google.com/...">
+        </div>
+      </div>
+
+      <label>WebGL URL</label>
+      <input type="url" id="f-webgl" placeholder="https://your-host/game/">
+
+      <div id="media-uploads">
+        <h3 style="font-family: 'Fraunces', serif; font-size: 1rem; margin: 22px 0 4px;">Media uploads (optional)</h3>
+        <p class="small" style="margin: 0 0 10px;">Files copy into <code>media/&lt;slug&gt;/</code>. Required filenames: <code>video.mp4</code>, <code>poster.jpg</code>, <code>1.jpg</code>, <code>2.jpg</code>, <code>3.jpg</code>. Skip a slot to keep the existing file.</p>
+        <div class="media-grid">
+          <div class="media-field">
+            <label>video.mp4</label>
+            <input type="file" id="f-video" accept="video/mp4,video/quicktime">
+          </div>
+          <div class="media-field">
+            <label>poster.jpg</label>
+            <input type="file" id="f-poster" accept="image/jpeg,image/png">
+          </div>
+          <div class="media-field">
+            <label>1.jpg</label>
+            <input type="file" id="f-thumb1" accept="image/jpeg,image/png">
+          </div>
+          <div class="media-field">
+            <label>2.jpg</label>
+            <input type="file" id="f-thumb2" accept="image/jpeg,image/png">
+          </div>
+          <div class="media-field">
+            <label>3.jpg</label>
+            <input type="file" id="f-thumb3" accept="image/jpeg,image/png">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn ghost" id="cancel-dialog">Cancel</button>
+        <button type="submit" class="btn">Save project</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    // ===== Status toast =====
+    // Toasts are persisted in sessionStorage so they survive page reloads
+    // (Live Server, file-watcher refreshes, etc. won't eat your save message).
+    const $status = document.getElementById("status");
+    let statusTimer = null;
+    const TOAST_KEY = "admin-pending-toast";
+
+    const showToast = (msg, kind, durationMs) => {
+      const icon = kind === "err" ? "✕" : "✓";
+      $status.innerHTML = `<span class="icon">${icon}</span><span class="msg"></span><button class="close-x" type="button" aria-label="Dismiss">✕</button>`;
+      $status.querySelector(".msg").textContent = msg;
+      $status.classList.remove("ok", "err", "show");
+      void $status.offsetWidth; // force reflow so the animation re-runs
+      if (kind) $status.classList.add(kind);
+      $status.classList.add("show");
+      $status.querySelector(".close-x").addEventListener("click", () => {
+        $status.classList.remove("show");
+        clearTimeout(statusTimer);
+        sessionStorage.removeItem(TOAST_KEY);
+      }, { once: true });
+      clearTimeout(statusTimer);
+      statusTimer = setTimeout(() => {
+        $status.classList.remove("show");
+        sessionStorage.removeItem(TOAST_KEY);
+      }, durationMs);
+    };
+
+    const flash = (msg, kind = "ok") => {
+      const duration = kind === "err" ? 6000 : 4500;
+      // Persist so a page reload doesn't eat the message
+      try {
+        sessionStorage.setItem(TOAST_KEY, JSON.stringify({
+          msg, kind, expires: Date.now() + duration
+        }));
+      } catch (_) { /* sessionStorage might be unavailable */ }
+      showToast(msg, kind, duration);
+    };
+
+    // On page load, replay any toast that hadn't finished showing.
+    (function replayPendingToast() {
+      try {
+        const raw = sessionStorage.getItem(TOAST_KEY);
+        if (!raw) return;
+        const t = JSON.parse(raw);
+        const remaining = t.expires - Date.now();
+        if (remaining > 600) {
+          showToast(t.msg, t.kind, remaining);
+        } else {
+          sessionStorage.removeItem(TOAST_KEY);
+        }
+      } catch (_) { /* ignore */ }
+    })();
+
+    // ===== File System Access state =====
+    let rootHandle = null; // DirectoryHandle of the portfolio root
+    let projectsData = { projects: [] };
+    let skillsData = { categories: [] };
+
+    // ===== Persistent folder handle (IndexedDB) =====
+    // The browser drops file-system permissions between sessions for security,
+    // but we can stash the DirectoryHandle in IndexedDB and re-request perm
+    // with a single user click — much nicer than re-picking the folder.
+    const IDB_NAME = "portfolio-admin";
+    const IDB_STORE = "handles";
+    const IDB_KEY = "root";
+
+    const openIdb = () => new Promise((resolve, reject) => {
+      const req = indexedDB.open(IDB_NAME, 1);
+      req.onupgradeneeded = () => req.result.createObjectStore(IDB_STORE);
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+
+    const idbGet = async (key) => {
+      const db = await openIdb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, "readonly");
+        const r = tx.objectStore(IDB_STORE).get(key);
+        r.onsuccess = () => resolve(r.result || null);
+        r.onerror = () => reject(r.error);
+      });
+    };
+
+    const idbSet = async (key, value) => {
+      const db = await openIdb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, "readwrite");
+        tx.objectStore(IDB_STORE).put(value, key);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    };
+
+    const idbDel = async (key) => {
+      const db = await openIdb();
+      return new Promise((resolve, reject) => {
+        const tx = db.transaction(IDB_STORE, "readwrite");
+        tx.objectStore(IDB_STORE).delete(key);
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+      });
+    };
+
+    const verifyPermission = async (handle, requestIfPrompt = false) => {
+      const opts = { mode: "readwrite" };
+      if ((await handle.queryPermission(opts)) === "granted") return true;
+      if (requestIfPrompt && (await handle.requestPermission(opts)) === "granted") return true;
+      return false;
+    };
+
+    const getFile = async (path) => {
+      // Read a file by relative path. Returns File object or null.
+      const parts = path.split("/").filter(Boolean);
+      let dir = rootHandle;
+      for (let i = 0; i < parts.length - 1; i++) {
+        dir = await dir.getDirectoryHandle(parts[i], { create: false }).catch(() => null);
+        if (!dir) return null;
+      }
+      const handle = await dir.getFileHandle(parts[parts.length - 1], { create: false }).catch(() => null);
+      return handle ? await handle.getFile() : null;
+    };
+
+    const writeFile = async (path, blobOrText) => {
+      const parts = path.split("/").filter(Boolean);
+      let dir = rootHandle;
+      for (let i = 0; i < parts.length - 1; i++) {
+        dir = await dir.getDirectoryHandle(parts[i], { create: true });
+      }
+      const handle = await dir.getFileHandle(parts[parts.length - 1], { create: true });
+      const writable = await handle.createWritable();
+      await writable.write(blobOrText);
+      await writable.close();
+    };
+
+    // ===== Connect =====
+    // `silent` skips the toast — used for auto-reconnect on page load so the
+    // reconnect message doesn't overlap any subsequent save messages.
+    const finishConnect = async (handle, msg, silent = false) => {
+      const proj = await handle.getFileHandle("projects.json", { create: false }).catch(() => null);
+      if (!proj) {
+        flash("That folder doesn't contain projects.json — pick the portfolio root.", "err");
+        return false;
+      }
+      rootHandle = handle;
+      await loadProjects();
+      await loadSkills();
+      document.getElementById("connect-panel").hidden = true;
+      document.getElementById("admin").hidden = false;
+      if (!silent) flash(msg || "Connected — ready to edit ✺", "ok");
+      // Add a "Disconnect" / "Pick different folder" hint at the top of admin
+      ensureDisconnectButton();
+      return true;
+    };
+
+    const ensureDisconnectButton = () => {
+      if (document.getElementById("disconnect-btn")) return;
+      const admin = document.getElementById("admin");
+      const bar = document.createElement("div");
+      bar.style.cssText = "display:flex;justify-content:flex-end;gap:10px;margin-bottom:14px;font-size:0.85rem;color:var(--ink-soft);";
+      const folderName = rootHandle ? rootHandle.name : "folder";
+      bar.innerHTML = `
+        <span style="align-self:center;">📁 Connected to <strong>${escapeHtml(folderName)}</strong></span>
+        <button class="btn ghost" id="disconnect-btn" style="padding:6px 14px;font-size:0.85rem;">Disconnect &amp; pick another</button>`;
+      admin.insertBefore(bar, admin.firstChild);
+      document.getElementById("disconnect-btn").addEventListener("click", async () => {
+        await idbDel(IDB_KEY);
+        location.reload();
+      });
+    };
+
+    document.getElementById("connect-btn").addEventListener("click", async () => {
+      try {
+        // First: try to reuse the previously-stored handle
+        const stored = await idbGet(IDB_KEY);
+        if (stored) {
+          const ok = await verifyPermission(stored, true);
+          if (ok) {
+            if (await finishConnect(stored, `Reconnected to ${stored.name} ✺`)) return;
+          } else {
+            // Permission denied — fall through to picker
+            await idbDel(IDB_KEY);
+          }
+        }
+        const handle = await window.showDirectoryPicker({ mode: "readwrite" });
+        if (await finishConnect(handle)) {
+          await idbSet(IDB_KEY, handle);
+        }
+      } catch (err) {
+        if (err.name !== "AbortError") flash("Couldn't open folder: " + err.message, "err");
+      }
+    });
+
+    // ===== Auto-reconnect on page load =====
+    // If we have a saved handle and permission is still granted (no user prompt
+    // needed), connect silently — the top bar shows the connection status, so
+    // a toast would just be noise that competes with save messages.
+    (async () => {
+      if (!("showDirectoryPicker" in window)) return;
+      try {
+        const stored = await idbGet(IDB_KEY);
+        if (!stored) return;
+        const granted = await verifyPermission(stored, false); // query only
+        if (granted) {
+          await finishConnect(stored, null, true /* silent */);
+        } else {
+          // Permission needs a user click — update the connect button label
+          const btn = document.getElementById("connect-btn");
+          btn.textContent = `🔗 Reconnect to ${stored.name}`;
+          const help = document.querySelector("#connect-panel .help");
+          if (help) {
+            help.innerHTML = `You previously connected to <code>${escapeHtml(stored.name)}</code>. Click to grant permission again (one click — no folder picker).`;
+          }
+        }
+      } catch (err) {
+        console.warn("Auto-reconnect failed:", err);
+      }
+    })();
+
+    const loadProjects = async () => {
+      const file = await getFile("projects.json");
+      if (!file) throw new Error("projects.json missing");
+      const text = await file.text();
+      projectsData = JSON.parse(text);
+      renderProjectsList();
+    };
+
+    const saveProjects = async () => {
+      const text = JSON.stringify(projectsData, null, 2);
+      await writeFile("projects.json", text);
+    };
+
+    const loadSkills = async () => {
+      const file = await getFile("skills.json");
+      if (!file) { skillsData = { categories: [] }; renderSkillsList(); return; }
+      const text = await file.text();
+      skillsData = JSON.parse(text);
+      renderSkillsList();
+    };
+
+    const saveSkills = async () => {
+      const text = JSON.stringify(skillsData, null, 2);
+      await writeFile("skills.json", text);
+    };
+
+    // ===== Photo =====
+    document.getElementById("save-photo").addEventListener("click", async () => {
+      if (!rootHandle) return;
+      const input = document.getElementById("photo-file");
+      const f = input.files[0];
+      if (!f) { flash("Pick a photo file first.", "err"); return; }
+      try {
+        await writeFile("media/me.jpg", f);
+        flash("Photo saved → media/me.jpg", "ok");
+        input.value = "";
+      } catch (err) { flash("Save failed: " + err.message, "err"); }
+    });
+
+    // ===== Resume =====
+    document.getElementById("save-resume").addEventListener("click", async () => {
+      if (!rootHandle) return;
+      const input = document.getElementById("resume-file");
+      const f = input.files[0];
+      if (!f) { flash("Pick a PDF file first.", "err"); return; }
+      try {
+        await writeFile("media/resume.pdf", f);
+        flash("Resume saved → media/resume.pdf", "ok");
+        input.value = "";
+      } catch (err) { flash("Save failed: " + err.message, "err"); }
+    });
+
+    // ===== Projects list =====
+    const renderProjectsList = () => {
+      const list = document.getElementById("projects-list");
+      const ps = projectsData.projects || [];
+      if (ps.length === 0) {
+        list.innerHTML = '<p class="small">No projects yet — click "Add new project" below.</p>';
+        return;
+      }
+      list.innerHTML = ps.map((p, i) => `
+        <div class="project-row" data-i="${i}">
+          <div class="meta">
+            <strong>${escapeHtml(p.title)}</strong>
+            <small>${escapeHtml(p.subsection || "—")} · ${escapeHtml(p.slug)}</small>
+          </div>
+          <div class="row-btns">
+            <button class="btn ghost" data-act="edit" data-i="${i}">Edit</button>
+            <button class="btn danger" data-act="del" data-i="${i}">Delete</button>
+          </div>
+        </div>
+      `).join("");
+    };
+
+    const escapeHtml = (s) => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+    document.getElementById("projects-list").addEventListener("click", async (e) => {
+      const btn = e.target.closest("button[data-act]");
+      if (!btn) return;
+      const i = parseInt(btn.dataset.i, 10);
+      if (btn.dataset.act === "edit") openDialog(i);
+      else if (btn.dataset.act === "del") {
+        const p = projectsData.projects[i];
+        if (!confirm(`Delete "${p.title}"? This removes it from projects.json (media files in media/${p.slug}/ stay on disk).`)) return;
+        projectsData.projects.splice(i, 1);
+        try {
+          await saveProjects();
+          renderProjectsList();
+          flash(`Deleted "${p.title}"`, "ok");
+        } catch (err) { flash("Save failed: " + err.message, "err"); }
+      }
+    });
+
+    document.getElementById("add-project").addEventListener("click", () => openDialog(-1));
+
+    // ===== Skills list & dialog =====
+    const renderSkillsList = () => {
+      const list = document.getElementById("skills-list");
+      const cs = skillsData.categories || [];
+      if (cs.length === 0) {
+        list.innerHTML = '<p class="small">No categories yet — click "Add new category" below.</p>';
+        return;
+      }
+      list.innerHTML = cs.map((c, i) => `
+        <div class="project-row" data-i="${i}">
+          <div class="meta">
+            <strong>${escapeHtml(c.name)}</strong>
+            <small>${escapeHtml(c.tag || "—")} · ${(c.items || []).length} item${(c.items || []).length === 1 ? "" : "s"} · ${escapeHtml(c.color || "default")}</small>
+          </div>
+          <div class="row-btns">
+            <button class="btn ghost" data-skill-act="edit" data-i="${i}">Edit</button>
+            <button class="btn danger" data-skill-act="del" data-i="${i}">Delete</button>
+          </div>
+        </div>
+      `).join("");
+    };
+
+    document.getElementById("skills-list").addEventListener("click", async (e) => {
+      const btn = e.target.closest("button[data-skill-act]");
+      if (!btn) return;
+      const i = parseInt(btn.dataset.i, 10);
+      if (btn.dataset.skillAct === "edit") openSkillDialog(i);
+      else if (btn.dataset.skillAct === "del") {
+        const c = skillsData.categories[i];
+        if (!confirm(`Delete the "${c.name}" category?`)) return;
+        skillsData.categories.splice(i, 1);
+        try {
+          await saveSkills();
+          renderSkillsList();
+          flash(`Deleted "${c.name}"`, "ok");
+        } catch (err) { flash("Save failed: " + err.message, "err"); }
+      }
+    });
+
+    document.getElementById("add-skill").addEventListener("click", () => openSkillDialog(-1));
+
+    const skillDlg = document.getElementById("skill-dialog");
+    const skillForm = document.getElementById("skill-form");
+
+    const openSkillDialog = (idx) => {
+      document.getElementById("skill-editing-index").value = idx;
+      document.getElementById("skill-dialog-title").textContent = idx >= 0 ? "Edit category" : "Add new category";
+      if (idx >= 0) {
+        const c = skillsData.categories[idx];
+        document.getElementById("sf-name").value = c.name || "";
+        document.getElementById("sf-tag").value = c.tag || "";
+        document.getElementById("sf-color").value = c.color || "s-red";
+        document.getElementById("sf-items").value = (c.items || []).join("\n");
+      } else {
+        skillForm.reset();
+        document.getElementById("skill-editing-index").value = "-1";
+        document.getElementById("sf-color").value = "s-red";
+      }
+      skillDlg.showModal();
+    };
+
+    document.getElementById("skill-cancel-dialog").addEventListener("click", () => skillDlg.close());
+
+    skillForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const idx = parseInt(document.getElementById("skill-editing-index").value, 10);
+      const cat = {
+        tag: document.getElementById("sf-tag").value.trim(),
+        name: document.getElementById("sf-name").value.trim(),
+        color: document.getElementById("sf-color").value,
+        items: document.getElementById("sf-items").value
+          .split("\n")
+          .map(s => s.trim())
+          .filter(Boolean)
+      };
+      try {
+        if (idx >= 0) skillsData.categories[idx] = cat;
+        else skillsData.categories.push(cat);
+        await saveSkills();
+        renderSkillsList();
+        skillDlg.close();
+        flash(idx >= 0 ? `Updated "${cat.name}"` : `Added "${cat.name}"`, "ok");
+      } catch (err) {
+        flash("Save failed: " + err.message, "err");
+      }
+    });
+
+    // ===== Dialog =====
+    const dlg = document.getElementById("project-dialog");
+    const form = document.getElementById("project-form");
+    const slugInput = document.getElementById("f-slug");
+    const titleInput = document.getElementById("f-title");
+
+    // Auto-generate slug from title (until user manually edits it)
+    let slugManuallyEdited = false;
+    slugInput.addEventListener("input", () => { slugManuallyEdited = true; });
+    titleInput.addEventListener("input", () => {
+      if (slugManuallyEdited) return;
+      slugInput.value = titleInput.value
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+    });
+
+    const openDialog = (idx) => {
+      document.getElementById("editing-index").value = idx;
+      document.getElementById("dialog-title").textContent = idx >= 0 ? "Edit project" : "Add new project";
+      slugManuallyEdited = idx >= 0;
+      if (idx >= 0) {
+        const p = projectsData.projects[idx];
+        document.getElementById("f-title").value = p.title || "";
+        document.getElementById("f-subsection").value = p.subsection || "";
+        document.getElementById("f-slug").value = p.slug || "";
+        document.getElementById("f-description").value = p.description || "";
+        document.getElementById("f-chips").value = (p.chips || []).join(", ");
+        document.getElementById("f-sticker-text").value = p.stickerText || "";
+        document.getElementById("f-sticker-color").value = p.stickerColor || "";
+        document.getElementById("f-has-media").value = String(!!p.hasMedia);
+        document.getElementById("f-show-store").value = String(!!p.showStoreLinks);
+        document.getElementById("f-play-store").value = p.playStore || "";
+        document.getElementById("f-webgl").value = p.webgl || "";
+      } else {
+        form.reset();
+        document.getElementById("editing-index").value = "-1";
+      }
+      // Clear file inputs (can't be set programmatically)
+      ["f-video", "f-poster", "f-thumb1", "f-thumb2", "f-thumb3"].forEach(id => {
+        document.getElementById(id).value = "";
+      });
+      dlg.showModal();
+    };
+
+    document.getElementById("cancel-dialog").addEventListener("click", () => dlg.close());
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const idx = parseInt(document.getElementById("editing-index").value, 10);
+      const slug = document.getElementById("f-slug").value.trim();
+      if (!/^[a-z0-9-]+$/.test(slug)) { flash("Slug must be lowercase letters, numbers, dashes only.", "err"); return; }
+
+      const project = {
+        slug,
+        title: document.getElementById("f-title").value.trim(),
+        subsection: document.getElementById("f-subsection").value.trim(),
+        description: document.getElementById("f-description").value.trim(),
+        chips: document.getElementById("f-chips").value.split(",").map(s => s.trim()).filter(Boolean),
+        stickerText: document.getElementById("f-sticker-text").value.trim(),
+        stickerColor: document.getElementById("f-sticker-color").value,
+        playStore: document.getElementById("f-play-store").value.trim(),
+        webgl: document.getElementById("f-webgl").value.trim(),
+        hasMedia: document.getElementById("f-has-media").value === "true",
+        showStoreLinks: document.getElementById("f-show-store").value === "true"
+      };
+
+      // Upload media files if provided
+      const mediaUploads = [
+        ["f-video", "video.mp4"],
+        ["f-poster", "poster.jpg"],
+        ["f-thumb1", "1.jpg"],
+        ["f-thumb2", "2.jpg"],
+        ["f-thumb3", "3.jpg"]
+      ];
+      try {
+        for (const [inputId, filename] of mediaUploads) {
+          const f = document.getElementById(inputId).files[0];
+          if (f) await writeFile(`media/${slug}/${filename}`, f);
+        }
+
+        if (idx >= 0) projectsData.projects[idx] = project;
+        else projectsData.projects.push(project);
+
+        await saveProjects();
+        renderProjectsList();
+        dlg.close();
+        flash(idx >= 0 ? `Updated "${project.title}"` : `Added "${project.title}"`, "ok");
+      } catch (err) {
+        flash("Save failed: " + err.message, "err");
+      }
+    });
+
+    // Browser-support check
+    if (!("showDirectoryPicker" in window)) {
+      document.querySelector("#connect-panel .help").innerHTML =
+        '⚠ Your browser doesn\'t support the File System Access API. <strong>Use Chrome or Edge</strong> on desktop to run this admin page.';
+      document.getElementById("connect-btn").disabled = true;
+    }
+  </script>
+</body>
+</html>

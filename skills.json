@@ -1,0 +1,81 @@
+{
+  "categories": [
+    {
+      "tag": "langs",
+      "name": "Languages",
+      "color": "s-yellow",
+      "items": [
+        "C# · C · C++",
+        "Python",
+        "Go (Golang)",
+        "JavaScript · Node.js",
+        "SQL"
+      ]
+    },
+    {
+      "tag": "games",
+      "name": "Game Dev",
+      "color": "s-red",
+      "items": [
+        "Unity (C#)",
+        "Mobile · Android & iOS",
+        "Idle / Tycoon · Hyper-Casual",
+        "Match / Puzzle · Arcade · Action / Shooter",
+        "Photon Network (multiplayer)",
+        "Shader Graph · URP"
+      ]
+    },
+    {
+      "tag": "xr / ar",
+      "name": "XR / AR / Immersive",
+      "color": "s-blue",
+      "items": [
+        "XR Interaction Toolkit",
+        "OpenXR · Meta XR SDK",
+        "Smart Glasses (MR)",
+        "AR Visualization (Unity)",
+        "WebGL Builds",
+        "Hand Tracking · Controller Input"
+      ]
+    },
+    {
+      "tag": "ai & ml",
+      "name": "AI & ML",
+      "color": "s-green",
+      "items": [
+        "Machine Learning",
+        "Whisper STT",
+        "Local LLMs (Ollama)",
+        "Windows TTS",
+        "QR / Vision Pipelines"
+      ]
+    },
+    {
+      "tag": "backend",
+      "name": "Backend, Web & Data",
+      "color": "s-peach",
+      "items": [
+        "ASP.NET Core · .NET",
+        "REST APIs · JWT Auth",
+        "Entity Framework Core",
+        "Node.js",
+        "HTML · CSS · JavaScript",
+        "Bootstrap",
+        "MySQL · PostgreSQL"
+      ]
+    },
+    {
+      "tag": "cs",
+      "name": "CS Fundamentals & Craft",
+      "color": "s-cream",
+      "items": [
+        "Data Structures & Algorithms",
+        "Object-Oriented Programming",
+        "**800+** problems on Codeforces & Leetcode",
+        "Git & GitHub",
+        "Performance Profiling",
+        "Rapid Prototyping"
+      ]
+    }
+  ]
+}

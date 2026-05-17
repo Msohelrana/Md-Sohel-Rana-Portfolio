@@ -1,0 +1,212 @@
+{
+  "projects": [
+    {
+      "slug": "hotel-tycoon",
+      "title": "Hotel Tycoon: Idle Manager",
+      "subsection": "Shipped Mobile Games",
+      "description": "An idle tycoon game where players build, upgrade, and manage a growing hotel empire. Every tap and decision compounds — rooms, staff, amenities, and prestige unlock new revenue streams.",
+      "chips": [
+        "Unity",
+        "Mobile",
+        "Idle / Tycoon",
+        "Progression Design"
+      ],
+      "stickerText": "shipped!",
+      "stickerColor": "s-green",
+      "playStore": "https://play.google.com/store/apps/details?id=com.NextGenStudioz.HotelTycoon",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": true
+    },
+    {
+      "slug": "highway-havoc",
+      "title": "Highway Havoc",
+      "subsection": "Shipped Mobile Games",
+      "description": "A vehicular action shooter — race down the highway, shoot down waves of enemies, and survive escalating chaos. Tight controls, punchy gunplay, and an arcade feel.",
+      "chips": [
+        "Unity",
+        "Mobile",
+        "Action / Shooter",
+        "Vehicle Combat"
+      ],
+      "stickerText": "live!",
+      "stickerColor": "s-blue",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": true
+    },
+    {
+      "slug": "supreme-strike",
+      "title": "Supreme Strike",
+      "subsection": "Shipped Mobile Games",
+      "description": "An action-striking game with timing-based combat. Land clean hits, build combos, and take down increasingly tough opponents across escalating stages.",
+      "chips": [
+        "Unity",
+        "Mobile",
+        "Action",
+        "Combat Feel"
+      ],
+      "stickerText": "shipped!",
+      "stickerColor": "",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": true
+    },
+    {
+      "slug": "goods-match",
+      "title": "Goods Match",
+      "subsection": "Shipped Mobile Games",
+      "description": "A relaxing item-matching puzzle. Spot pairs across cluttered scenes, clear the board, and progress through cozy themed levels — easy to pick up, hard to put down.",
+      "chips": [
+        "Unity",
+        "Mobile",
+        "Match / Puzzle",
+        "Casual"
+      ],
+      "stickerText": "live!",
+      "stickerColor": "s-green",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": true
+    },
+    {
+      "slug": "mr-smart-glass",
+      "title": "MR Smart Glass — QR Spawner",
+      "subsection": "XR & Apps",
+      "description": "A Unity Mixed Reality app for smart glasses. Scan a QR code and the prefab mapped to that code spawns into your space. Built for hands-free, on-the-go object lookup.",
+      "chips": [
+        "Unity",
+        "C#",
+        "MR / Smart Glasses",
+        "QR Vision"
+      ],
+      "stickerText": "new!",
+      "stickerColor": "",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": false
+    },
+    {
+      "slug": "vr-ai-assistant",
+      "title": "VR AI Assistant",
+      "subsection": "XR & Apps",
+      "description": "A Unity VR experience with a voice-driven AI companion. Press Space → Whisper transcribes your speech → a local Ollama (phi3) model replies → Windows TTS speaks the response back in-world.",
+      "chips": [
+        "Unity",
+        "VR",
+        "Whisper STT",
+        "Ollama / phi3",
+        "Windows TTS"
+      ],
+      "stickerText": "fun!",
+      "stickerColor": "s-blue",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": false
+    },
+    {
+      "slug": "ar-visualization",
+      "title": "AR Visualization",
+      "subsection": "XR & Apps",
+      "description": "A Unity AR app that lets users preview furniture in their real space before buying — point your camera at the floor, place a sofa, walk around it, see how it fits. Built in C# with Unity's AR Foundation.",
+      "chips": [
+        "Unity",
+        "C#",
+        "AR / Augmented Reality",
+        "AR Foundation",
+        "Furniture Preview"
+      ],
+      "stickerText": "ar!",
+      "stickerColor": "s-green",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": false
+    },
+    {
+      "slug": "car-racing",
+      "title": "Car Racing Game",
+      "subsection": "Other Unity Projects",
+      "description": "A multiplayer car racing game in Unity using Photon Network — real-time multi-car sessions, networked physics, and competitive lap times. Players join a room and race head-to-head.",
+      "chips": [
+        "Unity",
+        "C#",
+        "Multiplayer",
+        "Photon Network",
+        "Racing"
+      ],
+      "stickerText": "multiplayer!",
+      "stickerColor": "s-blue",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": false
+    },
+    {
+      "slug": "neo-clothing",
+      "title": "Neo-Clothing",
+      "subsection": "Other Unity Projects",
+      "description": "A 3D WebGL configurator built in Unity for inspecting fabrics, tiles, and cloth materials. Spin the object, swap textures, recolor the cloth — runs straight in the browser, no install needed.",
+      "chips": [
+        "Unity",
+        "C#",
+        "WebGL",
+        "3D Visualization",
+        "Material / Color"
+      ],
+      "stickerText": "webgl!",
+      "stickerColor": "s-green",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": true,
+      "showStoreLinks": false
+    },
+    {
+      "slug": "ecommerce-api",
+      "title": "E-Commerce Web API",
+      "subsection": "Web / Backend",
+      "description": "An e-commerce backend built with ASP.NET Core — REST endpoints for products, categories, carts, orders, and user accounts. JWT-secured auth, Entity Framework Core data layer, and a clean layered architecture that's easy to extend with new modules (payments, reviews, inventory).",
+      "chips": [
+        ".NET",
+        "ASP.NET Core",
+        "C#",
+        "REST API",
+        "EF Core",
+        "JWT Auth",
+        "E-Commerce"
+      ],
+      "stickerText": "in progress!",
+      "stickerColor": "s-blue",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": false,
+      "showStoreLinks": false
+    },
+    {
+      "slug": "prescription-api",
+      "title": "Prescription Generator Web API",
+      "subsection": "Web / Backend",
+      "description": "A healthcare backend that lets doctors compose, store, and export patient prescriptions. ASP.NET Core REST endpoints for patients, medicines, and prescriptions; printable PDF generation; role-based auth so doctors and patients only see what's theirs.",
+      "chips": [
+        ".NET",
+        "ASP.NET Core",
+        "C#",
+        "REST API",
+        "EF Core",
+        "PDF Generation",
+        "Healthcare"
+      ],
+      "stickerText": "in progress!",
+      "stickerColor": "s-green",
+      "playStore": "",
+      "webgl": "",
+      "hasMedia": false,
+      "showStoreLinks": false
+    }
+  ]
+}

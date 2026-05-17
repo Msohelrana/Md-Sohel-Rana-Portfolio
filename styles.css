@@ -16,7 +16,11 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-x: clip;
+}
 
 body {
   margin: 0;
@@ -1216,43 +1220,64 @@ body > * { position: relative; z-index: 1; }
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(26, 26, 26, 0.85);
+  background: rgba(26, 26, 26, 0.92);
   backdrop-filter: blur(8px);
   display: none;
-  align-items: center;
-  justify-content: center;
   z-index: 100;
-  padding: 40px;
+  overflow: hidden;
 }
-.lightbox.open { display: flex; }
+.lightbox.open { display: block; }
+
 .lb-content {
-  max-width: 92vw;
-  max-height: 88vh;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lb-content img,
+.lb-content video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Hard-clamp to the visible viewport with a small margin.
+     dvh handles mobile URL-bar collapse; vh is the fallback. */
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.4);
+  display: block;
+}
+.lb-close {
+  position: fixed;
+  top: 16px; right: 16px;
+  background: var(--bg);
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 110;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.lb-content img,
-.lb-content video {
-  max-width: 92vw;
-  max-height: 88vh;
-  border-radius: 12px;
-  border: 2px solid var(--bg);
-  box-shadow: 0 20px 80px rgba(0,0,0,0.4);
+.lb-close:hover,
+.lb-close:focus-visible { background: var(--red); color: var(--bg); border-color: var(--red); outline: none; }
+.lb-content { z-index: 1; position: relative; }
+@media (max-width: 600px) {
+  .lightbox { padding: 16px; }
+  .lb-close { top: 12px; right: 12px; width: 44px; height: 44px; }
 }
-.lb-close {
-  position: absolute;
-  top: 20px; right: 24px;
-  background: var(--bg);
-  border: 2px solid var(--ink);
-  color: var(--ink);
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.lb-close:hover { background: var(--red); color: var(--bg); border-color: var(--red); }
 
 /* Reveal on scroll */
 .reveal {
