@@ -19,12 +19,16 @@
 
   <nav class="nav">
     <a href="#top" class="logo">
-      <span class="blob-dot"></span> Md. Sohel Rana
+      <img class="logo-avatar" src="media/me.jpg" alt="" /> Md. Sohel Rana
     </a>
-    <ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu" class="nav-menu">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
       <li><a href="#contact" class="nav-cta">Say Hi →</a></li>
     </ul>
   </nav>
@@ -72,20 +76,6 @@
     </div>
   </header>
 
-  <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Unity <span class="star">✺</span> Mobile Games <span class="star">✺</span> Hyper-Casual <span
-          class="star">✺</span> Idle Tycoon <span class="star">✺</span> C# <span class="star">✺</span> Mixed Reality
-        <span class="star">✺</span> OpenXR <span class="star">✺</span> Smart Glasses <span class="star">✺</span> Voice
-        AI <span class="star">✺</span> Shader Graph <span class="star">✺</span></span>
-      <span>Unity <span class="star">✺</span> Mobile Games <span class="star">✺</span> Hyper-Casual <span
-          class="star">✺</span> Idle Tycoon <span class="star">✺</span> C# <span class="star">✺</span> Mixed Reality
-        <span class="star">✺</span> OpenXR <span class="star">✺</span> Smart Glasses <span class="star">✺</span> Voice
-        AI <span class="star">✺</span> Shader Graph <span class="star">✺</span></span>
-    </div>
-  </div>
-
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="section-head">
@@ -94,37 +84,57 @@
     </div>
     <div class="about-grid">
       <div class="about-text">
-        <p>
-          I'm a Unity developer with a foot in two camps. On the games side,
-          I've shipped <strong>Hotel Tycoon: Idle Manager</strong>,
-          <strong>Highway Havoc</strong>, <strong>Supreme Strike</strong>, and
-          <strong>Goods Match</strong> — mobile games spanning idle tycoon, arcade,
-          action, and match genres.
+        <p class="big-quote">
+          <span class="quote-mark">“</span>I'm a Unity developer who likes shipping <strong>weird &amp; wonderful</strong>
+          things — mobile games people actually play, MR/AR/VR prototypes that make folks grin, and clean .NET backends.
         </p>
         <p>
-          On the XR side I build <strong>Mixed Reality</strong> and
-          <strong>Virtual Reality</strong> prototypes — QR-driven object spawners
-          on smart glasses, voice-controlled AI companions in VR, and the playful
-          interactions that make people grin the first time they put on a headset.
+          I straddle three worlds: <strong>game dev</strong>, <strong>immersive XR / AR</strong>, and
+          <strong>ASP.NET Core backends</strong>. I care about the small details — a satisfying tap, a snappy feedback
+          loop, a UI that doesn't get in the way. End-to-end: concept, scripting, scene work, and shipping the build.
         </p>
         <p>
-          I care about the small details — a satisfying tap, a snappy feedback
-          loop, a UI that doesn't get in the way. End-to-end: concept, scripting,
-          scene work, and shipping the build.
-        </p>
-        <p>
-          Outside of games and XR I also build <strong>ASP.NET Core</strong> web APIs
-          and backend services in C# — clean REST endpoints, a tidy data layer, and
-          deployments that don't fall over on Monday.
+          Currently shipping at <strong>Talent Pro</strong> as a Junior Unity Developer, while grinding competitive
+          programming puzzles on Codeforces &amp; Leetcode on the side.
         </p>
       </div>
-      <aside class="sticky-note" aria-label="A personal note">
-        4 games shipped<br />
-        &amp; counting ✺<br />
-        ...now exploring<br />
-        AI-powered XR
-        <span class="signature">— Sohel</span>
-      </aside>
+
+      <div class="about-aside">
+        <aside class="about-stats" aria-label="Quick stats">
+          <div class="stat s-red">
+            <span class="stat-num">4</span>
+            <span class="stat-label">games shipped</span>
+          </div>
+          <div class="stat s-yellow">
+            <span class="stat-num">800+</span>
+            <span class="stat-label">CP problems solved</span>
+          </div>
+          <div class="stat s-green">
+            <span class="stat-num">3.60</span>
+            <span class="stat-label">CGPA · IIT, JU</span>
+          </div>
+          <div class="stat s-blue">
+            <span class="stat-num">'25</span>
+            <span class="stat-label">@ Talent Pro</span>
+          </div>
+        </aside>
+
+        <aside class="sticky-note about-sticky" aria-label="A personal note">
+          always tinkering ✺<br />
+          on AI-powered XR<br />
+          + the occasional<br />
+          weekend hack
+          <span class="signature">— Sohel</span>
+        </aside>
+      </div>
+    </div>
+
+    <div class="about-badges">
+      <span class="about-badge">📍 Bangladesh</span>
+      <span class="about-badge">🎓 IIT, Jahangirnagar University</span>
+      <span class="about-badge">💼 Junior Unity Dev @ Talent Pro</span>
+      <span class="about-badge">🏆 Math Olympiad Champion '15</span>
+      <span class="about-badge">⚽ Former IIT, JU footballer</span>
     </div>
   </section>
 
@@ -134,34 +144,83 @@
       <span class="num">~ 02</span>
       <h2>Things I'm good at.</h2>
     </div>
-    <div class="skills-cloud">
-      <span class="bubble b-red">Unity</span>
-      <span class="bubble">C#</span>
-      <span class="bubble b-yellow">Mobile Games</span>
-      <span class="bubble b-cream">Android &amp; iOS</span>
-      <span class="bubble b-green">Idle / Tycoon Design</span>
-      <span class="bubble">Hyper-Casual</span>
-      <span class="bubble b-peach">Match / Puzzle</span>
-      <span class="bubble">Arcade / Action</span>
-      <span class="bubble b-blue">Game Mechanics &amp; Balancing</span>
-      <span class="bubble">UI / UX</span>
-      <span class="bubble b-yellow">Shader Graph</span>
-      <span class="bubble b-cream">URP</span>
-      <span class="bubble b-red">XR Interaction Toolkit</span>
-      <span class="bubble">OpenXR</span>
-      <span class="bubble b-blue">Meta XR SDK</span>
-      <span class="bubble b-green">Smart Glasses (MR)</span>
-      <span class="bubble">Hand Tracking</span>
-      <span class="bubble b-peach">Whisper STT</span>
-      <span class="bubble b-yellow">Ollama / Local LLMs</span>
-      <span class="bubble">Windows TTS</span>
-      <span class="bubble b-cream">Git &amp; GitHub</span>
-      <span class="bubble">Performance Profiling</span>
-      <span class="bubble b-blue">Rapid Prototyping</span>
-      <span class="bubble b-red">.NET</span>
-      <span class="bubble b-peach">ASP.NET Core</span>
-      <span class="bubble b-green">REST APIs</span>
-      <span class="bubble">Entity Framework</span>
+    <div class="skills-grid">
+      <article class="skill-card s-yellow">
+        <span class="skill-tag">langs</span>
+        <h3>Languages</h3>
+        <ul>
+          <li>C# · C · C++</li>
+          <li>Python</li>
+          <li>Go (Golang)</li>
+          <li>JavaScript · Node.js</li>
+          <li>SQL</li>
+        </ul>
+      </article>
+
+      <article class="skill-card s-red">
+        <span class="skill-tag">games</span>
+        <h3>Game Dev</h3>
+        <ul>
+          <li>Unity (C#)</li>
+          <li>Mobile · Android &amp; iOS</li>
+          <li>Idle / Tycoon · Hyper-Casual</li>
+          <li>Match / Puzzle · Arcade · Action / Shooter</li>
+          <li>Photon Network (multiplayer)</li>
+          <li>Shader Graph · URP</li>
+        </ul>
+      </article>
+
+      <article class="skill-card s-blue">
+        <span class="skill-tag">xr / ar</span>
+        <h3>XR / AR / Immersive</h3>
+        <ul>
+          <li>XR Interaction Toolkit</li>
+          <li>OpenXR · Meta XR SDK</li>
+          <li>Smart Glasses (MR)</li>
+          <li>AR Visualization (Unity)</li>
+          <li>WebGL Builds</li>
+          <li>Hand Tracking · Controller Input</li>
+        </ul>
+      </article>
+
+      <article class="skill-card s-green">
+        <span class="skill-tag">ai &amp; ml</span>
+        <h3>AI &amp; ML</h3>
+        <ul>
+          <li>Machine Learning</li>
+          <li>Whisper STT</li>
+          <li>Local LLMs (Ollama)</li>
+          <li>Windows TTS</li>
+          <li>QR / Vision Pipelines</li>
+        </ul>
+      </article>
+
+      <article class="skill-card s-peach">
+        <span class="skill-tag">backend</span>
+        <h3>Backend, Web &amp; Data</h3>
+        <ul>
+          <li>ASP.NET Core · .NET</li>
+          <li>REST APIs · JWT Auth</li>
+          <li>Entity Framework Core</li>
+          <li>Node.js</li>
+          <li>HTML · CSS · JavaScript</li>
+          <li>Bootstrap</li>
+          <li>MySQL · PostgreSQL</li>
+        </ul>
+      </article>
+
+      <article class="skill-card s-cream">
+        <span class="skill-tag">cs</span>
+        <h3>CS Fundamentals &amp; Craft</h3>
+        <ul>
+          <li>Data Structures &amp; Algorithms</li>
+          <li>Object-Oriented Programming</li>
+          <li><strong>800+</strong> problems on Codeforces &amp; Leetcode</li>
+          <li>Git &amp; GitHub</li>
+          <li>Performance Profiling</li>
+          <li>Rapid Prototyping</li>
+        </ul>
+      </article>
     </div>
   </section>
 
@@ -210,7 +269,7 @@
 
       <div class="project-media">
         <div class="media-main" data-lightbox data-type="video" data-src="media/hotel-tycoon/video.mp4">
-          <img src="media/hotel-tycoon/poster.jpg" alt="Hotel Tycoon poster" />
+          <img src="media/hotel-tycoon/poster.jpg" loading="lazy" decoding="async" alt="Hotel Tycoon poster" />
           <div class="play-badge">▶</div>
         </div>
         <div class="media-gallery">
@@ -262,7 +321,7 @@
 
       <div class="project-media">
         <div class="media-main" data-lightbox data-type="video" data-src="media/highway-havoc/video.mp4">
-          <img src="media/highway-havoc/poster.jpg" alt="Highway Havoc poster" />
+          <img src="media/highway-havoc/poster.jpg" loading="lazy" decoding="async" alt="Highway Havoc poster" />
           <div class="play-badge">▶</div>
         </div>
         <div class="media-gallery">
@@ -314,7 +373,7 @@
 
       <div class="project-media">
         <div class="media-main" data-lightbox data-type="video" data-src="media/supreme-strike/video.mp4">
-          <img src="media/supreme-strike/poster.jpg" alt="Supreme Strike poster" />
+          <img src="media/supreme-strike/poster.jpg" loading="lazy" decoding="async" alt="Supreme Strike poster" />
           <div class="play-badge">▶</div>
         </div>
         <div class="media-gallery">
@@ -366,7 +425,7 @@
 
       <div class="project-media">
         <div class="media-main" data-lightbox data-type="video" data-src="media/goods-match/video.mp4">
-          <img src="media/goods-match/poster.jpg" alt="Goods Match poster" />
+          <img src="media/goods-match/poster.jpg" loading="lazy" decoding="async" alt="Goods Match poster" />
           <div class="play-badge">▶</div>
         </div>
         <div class="media-gallery">
@@ -401,7 +460,7 @@
 
       <div class="project-media">
         <div class="media-main" data-lightbox data-type="video" data-src="media/mr-smart-glass/video.mp4">
-          <img src="media/mr-smart-glass/poster.jpg" alt="MR Smart Glass poster" />
+          <img src="media/mr-smart-glass/poster.jpg" loading="lazy" decoding="async" alt="MR Smart Glass poster" />
           <div class="play-badge">▶</div>
         </div>
         <div class="media-gallery">
@@ -435,7 +494,7 @@
 
       <div class="project-media">
         <div class="media-main" data-lightbox data-type="video" data-src="media/vr-ai-assistant/video.mp4">
-          <img src="media/vr-ai-assistant/poster.jpg" alt="VR AI Assistant poster" />
+          <img src="media/vr-ai-assistant/poster.jpg" loading="lazy" decoding="async" alt="VR AI Assistant poster" />
           <div class="play-badge">▶</div>
         </div>
         <div class="media-gallery">
@@ -447,6 +506,110 @@
           </button>
           <button class="thumb" data-lightbox data-type="image" data-src="media/vr-ai-assistant/3.jpg">
             <img src="media/vr-ai-assistant/3.jpg" alt="VR AI Assistant screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <span class="sticker s-green">ar!</span>
+      <header class="project-head">
+        <h3>AR Visualization</h3>
+        <p>A Unity AR app that lets users preview furniture in their real space before buying — point your camera at the
+          floor, place a sofa, walk around it, see how it fits. Built in C# with Unity's AR Foundation.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">C#</span>
+          <span class="chip">AR / Augmented Reality</span>
+          <span class="chip">AR Foundation</span>
+          <span class="chip">Furniture Preview</span>
+        </div>
+      </header>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/ar-visualization/video.mp4">
+          <img src="media/ar-visualization/poster.jpg" loading="lazy" decoding="async" alt="AR Visualization poster" />
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/ar-visualization/1.jpg">
+            <img src="media/ar-visualization/1.jpg" alt="AR Visualization screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/ar-visualization/2.jpg">
+            <img src="media/ar-visualization/2.jpg" alt="AR Visualization screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/ar-visualization/3.jpg">
+            <img src="media/ar-visualization/3.jpg" alt="AR Visualization screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <h3 class="subhead">Other Unity Projects</h3>
+
+    <article class="project">
+      <span class="sticker s-blue">multiplayer!</span>
+      <header class="project-head">
+        <h3>Car Racing Game</h3>
+        <p>A multiplayer car racing game in Unity using Photon Network — real-time multi-car sessions, networked
+          physics, and competitive lap times. Players join a room and race head-to-head.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">C#</span>
+          <span class="chip">Multiplayer</span>
+          <span class="chip">Photon Network</span>
+          <span class="chip">Racing</span>
+        </div>
+      </header>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/car-racing/video.mp4">
+          <img src="media/car-racing/poster.jpg" loading="lazy" decoding="async" alt="Car Racing Game poster" />
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/car-racing/1.jpg">
+            <img src="media/car-racing/1.jpg" alt="Car Racing Game screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/car-racing/2.jpg">
+            <img src="media/car-racing/2.jpg" alt="Car Racing Game screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/car-racing/3.jpg">
+            <img src="media/car-racing/3.jpg" alt="Car Racing Game screenshot 3" loading="lazy" />
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <article class="project">
+      <span class="sticker s-green">webgl!</span>
+      <header class="project-head">
+        <h3>Neo-Clothing</h3>
+        <p>A 3D WebGL configurator built in Unity for inspecting fabrics, tiles, and cloth materials. Spin the object,
+          swap textures, recolor the cloth — runs straight in the browser, no install needed.</p>
+        <div class="chips">
+          <span class="chip">Unity</span>
+          <span class="chip">C#</span>
+          <span class="chip">WebGL</span>
+          <span class="chip">3D Visualization</span>
+          <span class="chip">Material / Color</span>
+        </div>
+      </header>
+
+      <div class="project-media">
+        <div class="media-main" data-lightbox data-type="video" data-src="media/neo-clothing/video.mp4">
+          <img src="media/neo-clothing/poster.jpg" loading="lazy" decoding="async" alt="Neo-Clothing poster" />
+          <div class="play-badge">▶</div>
+        </div>
+        <div class="media-gallery">
+          <button class="thumb" data-lightbox data-type="image" data-src="media/neo-clothing/1.jpg">
+            <img src="media/neo-clothing/1.jpg" alt="Neo-Clothing screenshot 1" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/neo-clothing/2.jpg">
+            <img src="media/neo-clothing/2.jpg" alt="Neo-Clothing screenshot 2" loading="lazy" />
+          </button>
+          <button class="thumb" data-lightbox data-type="image" data-src="media/neo-clothing/3.jpg">
+            <img src="media/neo-clothing/3.jpg" alt="Neo-Clothing screenshot 3" loading="lazy" />
           </button>
         </div>
       </div>
@@ -493,27 +656,146 @@
     </article>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="contact-wrap">
-      <div class="section-head" style="justify-content:center;">
-        <span class="num">~ 04</span>
-      </div>
-      <h2>Let's make something <span class="highlight">weird</span> together.</h2>
-      <p class="lede">Got a project in mind, or just want to say hi? My inbox is open.</p>
-      <div class="contact-list">
-        <a class="contact-pill" href="mailto:mdsohelrana5860@gmail.com">
-          <span class="icon">✉</span> mdsohelrana5860@gmail.com
-        </a>
-        <a class="contact-pill" href="https://github.com/Msohelrana" target="_blank" rel="noopener">
-          <span class="icon">◐</span> github.com/Msohelrana
-        </a>
-        <a class="contact-pill" href="https://www.linkedin.com/in/m-sohelrana/" target="_blank" rel="noopener">
-          <span class="icon">in</span> LinkedIn
-        </a>
-      </div>
-      <p class="heart">thanks for scrolling all the way down ♥</p>
+  <!-- RESUME -->
+  <section id="resume" class="section">
+    <div class="section-head">
+      <span class="num">~ 04</span>
+      <h2>Resume.</h2>
     </div>
+    <p class="lede">Have a flick through below, or grab a PDF copy.</p>
+
+    <div class="resume-actions">
+      <a class="btn primary" href="media/resume.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M 2 4 H 14 V 12 H 2 Z" />
+          <path d="M 6 8 H 10 M 6 6 H 10" />
+        </svg>
+        View Full Screen
+      </a>
+      <a class="btn ghost" href="media/resume.pdf" download="Md_Sohel_Rana_Resume.pdf">
+        <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M 8 2 V 11" />
+          <path d="M 4 7 L 8 11 L 12 7" />
+          <path d="M 2 14 H 14" />
+        </svg>
+        Download PDF
+      </a>
+    </div>
+
+    <div class="resume-frame" aria-label="Resume preview">
+      <object data="media/resume.pdf" type="application/pdf">
+        <div class="resume-fallback">
+          <p>Your browser can't display the PDF inline.</p>
+          <a class="btn primary" href="media/resume.pdf" target="_blank" rel="noopener">Open Resume in a New Tab</a>
+        </div>
+      </object>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-postcard">
+    <div class="section-head">
+      <span class="num">~ 05</span>
+      <h2>Drop me a line.</h2>
+    </div>
+
+    <article class="postcard">
+      <header class="postcard-top">
+        <span class="postcard-label">· POSTCARD ·</span>
+        <span class="postcard-place">Bangladesh → anywhere</span>
+        <div class="postcard-stamp">
+          <span class="stamp-num">26</span>
+          <span class="stamp-icon">✺</span>
+          <span class="stamp-name">SOHEL</span>
+        </div>
+      </header>
+
+      <div class="postcard-body">
+        <div class="postcard-message">
+          <p class="hand-message">
+            Hey,<br />
+            got a project, a freelance gig,<br />
+            or just want to say hi?<br /><br />
+            My inbox is open — I usually<br />
+            reply within a day or two.<br /><br />
+            <span class="signed">— Sohel ✎</span>
+          </p>
+          <div class="postmark" aria-hidden="true">
+            <span>BANGLADESH</span>
+            <span class="dot">·</span>
+            <span>2026</span>
+          </div>
+        </div>
+
+        <div class="postcard-address">
+          <p class="address-to">TO:<br />a new friend ↓</p>
+
+          <a class="postcard-email" href="mailto:mdsohelrana5860@gmail.com">
+            <span class="email-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <path d="M 3 7 L 12 13 L 21 7" />
+              </svg>
+            </span>
+            <span class="email-value">mdsohelrana5860@gmail.com</span>
+          </a>
+
+          <p class="stamps-label">or paste a stamp ✺</p>
+          <div class="stamps-row">
+            <a class="postage-stamp" href="https://github.com/Msohelrana" target="_blank" rel="noopener"
+              aria-label="GitHub">
+              <span class="stamp-platform">GitHub</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#181717"
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+              </svg>
+              <span class="stamp-handle">@Msohelrana</span>
+            </a>
+
+            <a class="postage-stamp" href="https://www.linkedin.com/in/m-sohelrana/" target="_blank" rel="noopener"
+              aria-label="LinkedIn">
+              <span class="stamp-platform">LinkedIn</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#0A66C2"
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.063 2.063 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              <span class="stamp-handle">m-sohelrana</span>
+            </a>
+
+            <a class="postage-stamp" href="https://codeforces.com/profile/mssohel_rana" target="_blank" rel="noopener"
+              aria-label="Codeforces">
+              <span class="stamp-platform">Codeforces</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#F03A4B"
+                  d="M4.5 7.5C5.328 7.5 6 8.172 6 9v10.5c0 .828-.672 1.5-1.5 1.5h-3C.673 21 0 20.328 0 19.5V9c0-.828.673-1.5 1.5-1.5h3z" />
+                <path fill="#FFCC00"
+                  d="M22.5 3c.828 0 1.5.673 1.5 1.5v15c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-15c0-.827.672-1.5 1.5-1.5h3z" />
+                <path fill="#1F8ACB"
+                  d="M13.5 0c.828 0 1.5.672 1.5 1.5v18c0 .828-.672 1.5-1.5 1.5h-3c-.828 0-1.5-.672-1.5-1.5v-18c0-.828.672-1.5 1.5-1.5h3z" />
+              </svg>
+              <span class="stamp-handle">@mssohel_rana</span>
+            </a>
+
+            <a class="postage-stamp" href="https://leetcode.com/u/msohel_rana/" target="_blank" rel="noopener"
+              aria-label="Leetcode">
+              <span class="stamp-platform">Leetcode</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#FFA116"
+                  d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.527 5.527 0 0 0 .064 2.875 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0z" />
+                <path fill="#2D2E2E"
+                  d="M10.605 12.595a1.38 1.38 0 0 0-1.38 1.38 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.38H10.605z" />
+              </svg>
+              <span class="stamp-handle">@msohel_rana</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <p class="heart">thanks for scrolling all the way down ♥</p>
   </section>
 
   <!-- Lightbox -->

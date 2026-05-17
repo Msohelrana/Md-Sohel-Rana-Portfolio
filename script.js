@@ -2,6 +2,37 @@
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+// Mobile nav hamburger
+const nav = document.querySelector(".nav");
+const navToggle = document.querySelector(".nav-toggle");
+if (nav && navToggle) {
+  navToggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", open);
+  });
+  // Close menu when a link inside is clicked
+  document.querySelectorAll(".nav-menu a").forEach(a => {
+    a.addEventListener("click", () => {
+      nav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+  // Close menu when the backdrop (::after on .nav) is tapped
+  nav.addEventListener("click", e => {
+    if (e.target === nav && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+  // Close menu on Escape
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && nav.classList.contains("open")) {
+      nav.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
 // Reveal sections on scroll
 const targets = document.querySelectorAll(".section, .hero, .page");
 targets.forEach(el => el.classList.add("reveal"));
@@ -15,7 +46,7 @@ const io = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.12 }
+  { threshold: 0, rootMargin: "0px 0px -60px 0px" }
 );
 targets.forEach(el => io.observe(el));
 

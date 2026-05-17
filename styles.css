@@ -341,12 +341,114 @@ body > * { position: relative; z-index: 1; }
 }
 @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; } }
 .about-text p {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   color: var(--ink-soft);
   margin: 0 0 18px;
-  max-width: 580px;
+  max-width: 600px;
 }
 .about-text strong { color: var(--ink); }
+
+.about-text .big-quote {
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--ink);
+  position: relative;
+  padding-left: 28px;
+  border-left: 4px solid var(--red);
+  max-width: 620px;
+  margin-bottom: 26px;
+}
+.about-text .big-quote .quote-mark {
+  position: absolute;
+  left: 6px;
+  top: -10px;
+  font-family: "Fraunces", serif;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--red);
+}
+
+/* Right column of about-grid: stats + sticky note stacked */
+.about-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-self: start;
+}
+
+/* About stat tiles */
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.about-sticky {
+  justify-self: stretch;
+  max-width: 320px;
+  margin-left: auto;
+  transform: rotate(-3deg);
+}
+.about-stats .stat {
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+  padding: 22px 18px;
+  text-align: center;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.about-stats .stat:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.about-stats .stat.s-red    { background: var(--red);    color: var(--bg); }
+.about-stats .stat.s-yellow { background: var(--yellow); color: var(--ink); }
+.about-stats .stat.s-green  { background: var(--green);  color: var(--bg); }
+.about-stats .stat.s-blue   { background: var(--blue);   color: var(--bg); }
+
+.about-stats .stat-num {
+  display: block;
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.about-stats .stat-label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  opacity: 0.92;
+}
+
+/* Contextual badges below the about-grid */
+.about-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px dashed var(--line);
+}
+.about-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-family: "Caveat", cursive;
+  font-size: 1.1rem;
+  color: var(--ink);
+  transition: transform 0.15s ease, background 0.2s;
+}
+.about-badge:hover {
+  transform: translateY(-2px) rotate(-1deg);
+  background: var(--yellow);
+}
 .sticky-note {
   background: var(--yellow);
   padding: 24px;
@@ -377,7 +479,77 @@ body > * { position: relative; z-index: 1; }
   color: var(--red);
 }
 
-/* Skills cloud */
+/* Circular avatar inside the nav logo */
+.logo-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+/* Skills — categorized cards */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+.skill-card {
+  position: relative;
+  padding: 28px 26px 24px;
+  background: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  box-shadow: 6px 6px 0 var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.skill-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+.skill-card .skill-tag {
+  position: absolute;
+  top: -14px;
+  left: 22px;
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  padding: 2px 14px;
+  border-radius: 999px;
+  background: var(--red);
+  color: var(--bg);
+  border: 2px solid var(--ink);
+  transform: rotate(-3deg);
+}
+.skill-card.s-red    .skill-tag { background: var(--red);     color: var(--bg); }
+.skill-card.s-blue   .skill-tag { background: var(--blue);    color: var(--bg); }
+.skill-card.s-green  .skill-tag { background: var(--green);   color: var(--bg); }
+.skill-card.s-yellow .skill-tag { background: var(--yellow);  color: var(--ink); }
+.skill-card.s-peach  .skill-tag { background: var(--peach);   color: var(--ink); }
+.skill-card.s-cream  .skill-tag { background: var(--bg-deep); color: var(--ink); }
+
+.skill-card h3 {
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  margin: 6px 0 16px;
+}
+.skill-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.skill-card li {
+  padding: 9px 0;
+  color: var(--ink-soft);
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.98rem;
+}
+.skill-card li:last-child { border-bottom: none; }
+
+/* Old skills-cloud kept as legacy (no longer used) */
 .skills-cloud {
   display: flex;
   flex-wrap: wrap;
@@ -612,61 +784,408 @@ body > * { position: relative; z-index: 1; }
 .sticker.s-green { background: var(--green); }
 .sticker.s-blue  { background: var(--blue); }
 
-/* Contact */
-.contact-wrap {
-  text-align: center;
-  padding: 40px 0 20px;
-}
-.contact-wrap h2 {
-  font-family: "Fraunces", serif;
-  font-weight: 700;
-  font-size: clamp(2.4rem, 7vw, 5rem);
-  line-height: 1.02;
-  letter-spacing: -0.03em;
-  margin: 0 0 18px;
-}
-.contact-wrap .lede {
-  font-size: 1.2rem;
-  color: var(--ink-soft);
-  max-width: 540px;
-  margin: 0 auto 32px;
-}
-.contact-list {
+/* Resume */
+.resume-actions {
   display: flex;
-  gap: 14px;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 14px;
+  margin-bottom: 32px;
 }
-.contact-pill {
-  display: inline-flex;
+.resume-actions .btn svg { flex-shrink: 0; }
+.resume-frame {
+  width: 100%;
+  height: 85vh;
+  max-height: 1100px;
+  min-height: 480px;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 8px 8px 0 var(--ink);
+  background: var(--bg-deep);
+  position: relative;
+}
+.resume-frame object,
+.resume-frame embed,
+.resume-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.resume-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 14px 22px;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  text-align: center;
+  color: var(--ink-soft);
+}
+@media (max-width: 700px) {
+  .resume-frame { height: 70vh; box-shadow: 6px 6px 0 var(--ink); }
+}
+
+/* Contact — postcard / mail style */
+.contact-postcard { padding-bottom: 80px; }
+
+.postcard {
+  max-width: 920px;
+  margin: 0 auto;
   background: var(--paper);
   border: 2px solid var(--ink);
-  border-radius: 999px;
+  border-radius: 6px;
+  box-shadow: 12px 12px 0 var(--ink);
+  transform: rotate(-1deg);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.postcard:hover {
+  transform: rotate(0deg) translate(-2px, -2px);
+  box-shadow: 16px 16px 0 var(--ink);
+}
+
+.postcard-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 28px;
+  border-bottom: 2px dashed var(--ink);
+  background: var(--bg-deep);
+  position: relative;
+}
+.postcard-label {
+  font-family: "DM Mono", monospace;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  font-size: 0.85rem;
   color: var(--ink);
+}
+.postcard-place {
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  flex: 1;
+  text-align: center;
+}
+.postcard-stamp {
+  width: 78px;
+  height: 78px;
+  padding: 5px;
+  background: var(--paper);
+  border: 2px dashed var(--ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transform: rotate(5deg);
+  position: relative;
+  flex-shrink: 0;
+}
+.postcard-stamp::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  background: var(--red);
+  z-index: 0;
+}
+.postcard-stamp > * { position: relative; z-index: 1; color: var(--bg); }
+.postcard-stamp .stamp-num {
+  font-family: "Fraunces", serif;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1;
+}
+.postcard-stamp .stamp-icon { font-size: 1rem; line-height: 1; }
+.postcard-stamp .stamp-name {
+  font-family: "DM Mono", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+}
+
+.postcard-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+}
+.postcard-body::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  bottom: 14px;
+  left: 50%;
+  border-left: 2px dashed var(--ink);
+  opacity: 0.6;
+}
+@media (max-width: 720px) {
+  .postcard-body { grid-template-columns: 1fr; }
+  .postcard-body::before {
+    left: 14px;
+    right: 14px;
+    top: 50%;
+    bottom: auto;
+    border-left: none;
+    border-top: 2px dashed var(--ink);
+  }
+}
+
+.postcard-message {
+  padding: 32px 30px;
+  position: relative;
+  min-height: 280px;
+}
+.hand-message {
+  font-family: "Caveat", cursive;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0;
+}
+.hand-message .signed {
+  color: var(--red);
+  font-size: 1.6rem;
+}
+
+.postmark {
+  position: absolute;
+  bottom: 18px;
+  right: 22px;
+  width: 110px;
+  height: 110px;
+  border: 2.5px solid var(--blue);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "DM Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--blue);
+  opacity: 0.55;
+  transform: rotate(-14deg);
+  text-align: center;
+  line-height: 1.3;
+}
+.postmark .dot { margin: 2px 0; }
+
+.postcard-address {
+  padding: 32px 30px;
+}
+.address-to {
+  font-family: "DM Mono", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.postcard-email {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
   text-decoration: none;
-  font-weight: 500;
-  transition: transform 0.15s, background 0.2s, color 0.2s;
+  color: var(--ink);
+  margin-bottom: 28px;
+  transition: color 0.2s;
 }
-.contact-pill:hover {
-  background: var(--ink);
-  color: var(--bg);
-  transform: translateY(-3px) rotate(-1deg);
-}
-.contact-pill .icon {
+.postcard-email:hover { color: var(--red); }
+.postcard-email .email-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 26px; height: 26px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--red);
   color: var(--bg);
-  font-size: 0.85rem;
-  font-weight: 700;
+  flex-shrink: 0;
 }
-.contact-pill:hover .icon { background: var(--yellow); color: var(--ink); }
+.postcard-email .email-icon svg { width: 20px; height: 20px; }
+.postcard-email .email-value {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  word-break: break-all;
+}
+
+.stamps-label {
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  margin: 0 0 12px;
+  transform: rotate(-1deg);
+  display: inline-block;
+}
+
+.stamps-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.postage-stamp {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 6px;
+  background: var(--paper);
+  border: 2px dashed var(--ink);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.2s ease;
+}
+.postage-stamp:nth-child(1) { transform: rotate(-2deg); }
+.postage-stamp:nth-child(2) { transform: rotate(2deg); }
+.postage-stamp:nth-child(3) { transform: rotate(-1deg); }
+.postage-stamp:nth-child(4) { transform: rotate(1deg); }
+.postage-stamp:hover {
+  transform: translateY(-3px) rotate(0deg) scale(1.04);
+  z-index: 2;
+}
+.postage-stamp svg {
+  width: 28px;
+  height: 28px;
+}
+.postage-stamp .stamp-platform {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.postage-stamp .stamp-handle {
+  font-family: "Caveat", cursive;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+@media (max-width: 600px) {
+  .postcard { transform: rotate(0deg); box-shadow: 8px 8px 0 var(--ink); }
+  .postcard:hover { box-shadow: 10px 10px 0 var(--ink); }
+  .postcard-message, .postcard-address { padding: 24px 22px; }
+  .hand-message { font-size: 1.3rem; }
+  .postmark { width: 86px; height: 86px; font-size: 0.6rem; bottom: 10px; right: 12px; }
+  .postcard-email .email-value { font-size: 1rem; }
+}
+.hand-signed {
+  font-family: "Caveat", cursive;
+  font-size: 2.2rem;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0;
+}
+.hand-signed .based {
+  display: block;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  font-style: normal;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.contact-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 22px;
+  border: 2px solid var(--ink);
+  border-radius: 18px;
+  background: var(--paper);
+  box-shadow: 5px 5px 0 var(--ink);
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.contact-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+.contact-card .card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font-size: 1.15rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.contact-card .card-icon svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+.contact-card .card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.contact-card .card-label {
+  font-family: "Caveat", cursive;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--ink-soft);
+}
+.contact-card .card-value {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.contact-card .card-arrow {
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.contact-card:hover .card-arrow {
+  transform: translateX(4px);
+  color: var(--ink);
+}
+
+/* Colored variants — icon badge stays white so brand colors stay true */
+.contact-card.c-red    { background: var(--red);    color: var(--bg); }
+.contact-card.c-red .card-label { color: rgba(255, 255, 255, 0.85); }
+.contact-card.c-red .card-value { color: var(--bg); }
+.contact-card.c-red .card-arrow { color: var(--bg); }
+
+.contact-card.c-blue   { background: var(--blue);   color: var(--bg); }
+.contact-card.c-blue .card-label { color: rgba(255, 255, 255, 0.85); }
+.contact-card.c-blue .card-value { color: var(--bg); }
+.contact-card.c-blue .card-arrow { color: var(--bg); }
+
+.contact-card.c-green  { background: var(--green);  color: var(--bg); }
+.contact-card.c-green .card-label { color: rgba(255, 255, 255, 0.85); }
+.contact-card.c-green .card-value { color: var(--bg); }
+.contact-card.c-green .card-arrow { color: var(--bg); }
+
+.contact-card.c-yellow { background: var(--yellow); color: var(--ink); }
+.contact-card.c-peach  { background: var(--peach);  color: var(--ink); }
 
 .heart {
   font-family: "Caveat", cursive;
@@ -746,11 +1265,136 @@ body > * { position: relative; z-index: 1; }
   transform: translateY(0);
 }
 
-@media (max-width: 600px) {
-  .nav ul { gap: 14px; }
-  .nav a { font-size: 0.85rem; }
-  .nav-cta { padding: 8px 14px; }
-  .sticky-note { justify-self: center; }
-  .project { padding: 22px; box-shadow: 6px 6px 0 var(--ink); }
-  .project:hover { box-shadow: 8px 8px 0 var(--ink); }
+/* Hamburger toggle (mobile only) */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+.nav.open .nav-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+.nav.open .nav-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* Headline overflow safety */
+.hero h1,
+.section-head h2,
+.contact-wrap h2 {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* === Responsive breakpoints === */
+
+/* Tablet / small laptop */
+@media (max-width: 760px) {
+  .hero { padding-top: clamp(40px, 8vw, 80px); }
+  .hero h1 { font-size: clamp(2.2rem, 9vw, 3.6rem); }
+  .section { padding-top: 60px; padding-bottom: 60px; }
+  .project { padding: 24px; box-shadow: 6px 6px 0 var(--ink); }
+  .project:hover { box-shadow: 8px 8px 0 var(--ink); transform: translate(-2px, -2px); }
+  .sticker { top: -14px; right: 18px; font-size: 1.15rem; padding: 5px 14px; }
+  .marquee-track { font-size: 1.3rem; gap: 28px; }
+}
+
+/* Phones — slide-in left drawer */
+@media (max-width: 700px) {
+  .nav { position: sticky; top: 0; }
+  .nav-toggle {
+    display: inline-flex;
+    position: relative;
+    z-index: 70;
+  }
+
+  /* Menu becomes a right-side drawer */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(280px, 80vw);
+    height: 100vh;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 0;
+    padding: 88px 24px 24px;
+    background: var(--bg);
+    border-left: 2px solid var(--ink);
+    box-shadow: -6px 0 30px rgba(0, 0, 0, 0.18);
+    transform: translateX(100%);
+    transition: transform 0.32s ease;
+    z-index: 60;
+    overflow-y: auto;
+  }
+  .nav.open .nav-menu { transform: translateX(0); }
+
+  /* Dimmed backdrop behind the drawer */
+  .nav::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(26, 26, 26, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.32s ease;
+    z-index: 55;
+  }
+  .nav.open::after {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-menu li {
+    list-style: none;
+    padding: 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .nav-menu li:last-child { border-bottom: none; }
+  .nav-menu a {
+    display: block;
+    font-size: 1.1rem;
+    padding: 14px 4px;
+  }
+  .nav-menu .nav-cta {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 12px 22px;
+    width: auto;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .hero h1 { font-size: clamp(2rem, 10vw, 2.8rem); }
+  .lede { font-size: 1rem; }
+  .section-head h2 { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .contact-wrap h2 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+  .sticky-note { justify-self: stretch; max-width: 100%; }
+  .polaroid { max-width: 260px; }
+  .project { padding: 18px; border-radius: 18px; }
+  .project-head h3 { font-size: 1.3rem; }
+  .sticker { font-size: 1rem; padding: 4px 12px; top: -12px; right: 14px; }
+  .marquee-track { font-size: 1.1rem; gap: 22px; }
+  .bubble { padding: 9px 14px; font-size: 0.9rem; }
+  .btn { padding: 12px 22px; font-size: 0.95rem; }
+  .contact-pill { padding: 12px 18px; }
+  .heart { margin-top: 36px; font-size: 1.4rem; }
 }
